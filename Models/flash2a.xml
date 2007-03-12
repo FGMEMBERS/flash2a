@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>flash2a.ac</path>
+
+ <!-- 3D Panel -->
+
+ <model>
+  <name>ASI</name>
+  <path>Aircraft/flash2a/Models/asi/asi.xml</path>
+  <offsets>
+   <x-m>0.745</x-m>
+   <y-m>-0.14</y-m>
+   <z-m>0.33</z-m>
+   <pitch-deg>-35</pitch-deg>
+  </offsets>
+ </model>
+
+
+ <model>
+  <name>Altimeter</name>
+  <path>Aircraft/flash2a/Models/alt/alt.xml</path>
+  <offsets>
+   <x-m>0.725</x-m>
+   <y-m>-0.06</y-m>
+   <z-m>0.36</z-m>
+   <pitch-deg>-35</pitch-deg>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Compass</name>
+  <path>Aircraft/flash2a/Models/compass/compass.xml</path>
+  <offsets>
+   <x-m>0.75</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.33</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>RPM</name>
+  <path>Aircraft/flash2a/Models/rpm/rpm.xml</path>
+  <offsets>
+   <x-m>0.745</x-m>
+   <y-m>0.14</y-m>
+   <z-m>0.33</z-m>
+   <pitch-deg>-35</pitch-deg>
+  </offsets>
+ </model>
+
+ <!-- Commented out until an accurate EGT guage is created -->
+ <!--
+ <model>
+  <name>EGT</name>
+  <path>Aircraft/Instruments-3d/egt/egt.xml</path>
+  <offsets>
+   <x-m>0.725</x-m>
+   <y-m>0.09</y-m>
+   <z-m>0.36</z-m>
+   <pitch-deg>-35</pitch-deg>
+  </offsets>
+ </model>
+ -->
+
+  <!-- Object movements -->
+  <animation>
+  <type>select</type>
+  <object-name>Prop</object-name>
+  <condition>
+   <less-than>
+    <property>engines/engine[0]/rpm</property>
+    <value>500</value>
+   </less-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>NoseWheel</object-name>
+  <object-name>NoseStrut</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <factor>-20</factor>
+  <center>
+   <x-m>0.24</x-m>
+   <y-m>0.0</y-m>
+   <z-m>-0.22</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>Prop</object-name>
+  <property>engines/engine[0]/rpm</property>
+  <factor>-1</factor>
+  <center>
+   <x-m>2.4</x-m>
+   <y-m>0</y-m>
+   <z-m>0.59</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Wing</object-name>
+  <object-name>ControlBar</object-name>
+  <object-name>Rudder</object-name>
+  <object-name>KingPost</object-name>
+  <object-name>WingKeel</object-name>
+  <object-name>ControlBarStrap</object-name>
+  <object-name>ControlBarBolt1</object-name>
+  <object-name>ControlBarBolt2</object-name>
+  <property>controls/flight/aileron</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>15</dep>
+   </entry>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>-15</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>1.55</x-m>
+   <y-m>0.0</y-m>
+   <z-m>1.96</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Wing</object-name>
+  <object-name>ControlBar</object-name>
+  <object-name>Rudder</object-name>
+  <object-name>KingPost</object-name>
+  <object-name>WingKeel</object-name>
+  <object-name>ControlBarStrap</object-name>
+  <object-name>ControlBarBolt1</object-name>
+  <object-name>ControlBarBolt2</object-name>
+  <object-name>HangStrap</object-name>
+  <property>controls/flight/elevator</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>8</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>-05</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>1.55</x-m>
+   <y-m>0.0</y-m>
+   <z-m>1.96</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+  <!-- Chrome animation for front post - should add others. -->
+
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>chrome2.rgb</texture>
+    <object-name>FrontPost</object-name>
+    <object-name>ControlBar</object-name>
+    <object-name>Pitot</object-name>
+    <object-name>FrontPost</object-name>
+  </animation>
+
+</PropertyList>

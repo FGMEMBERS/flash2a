@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+  File:     503.xml
+  Author:   Aero-Matic v 0.8
+
+  Inputs:
+    name:           503
+    type:           piston
+    power:          75 hp
+    augmented?      no
+    injected?       no
+-->
+
+<piston_engine name="503">
+  <minmp unit="INHG">          2.0 </minmp>
+  <maxmp unit="INHG">         30.0 </maxmp>
+  <displacement unit="IN3"> 30.00 </displacement>
+  <maxhp>        75.00 </maxhp>
+  <cycles>         2.0 </cycles>
+  <idlerpm>      700.0 </idlerpm>
+  <maxthrottle>    1.0 </maxthrottle>
+  <minthrottle>    0.1 </minthrottle>
+</piston_engine>
