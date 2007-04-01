@@ -29,18 +29,6 @@
  </animation>
 
  <animation>
-  <type>rotate</type>
-  <object-name>Needle10000</object-name>
-  <property>/instrumentation/altimeter/indicated-altitude-ft</property>
-  <factor>0.0036</factor>
-  <axis>
-   <x>-1</x>
-   <y>0</y>
-   <z>0</z>
-  </axis>
- </animation>
-
- <animation>
    <type>texrotate</type>
    <object-name>inhg</object-name>
    <property>/instrumentation/altimeter/setting-inhg</property>

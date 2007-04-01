@@ -1,38 +1,12 @@
 AC3Db
 MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
-MATERIAL "DefaultWhite" rgb 1 1 1 amb 1 1 1 emis 0.149 0.149 0.149 spec 0.502 0.502 0.502 shi 64 trans 0
 MATERIAL "Knob" rgb 0.321038 0.321038 0.321038 amb 0.5 0.5 0.5 emis 0 0 0 spec 0.732657 0.728648 0.728648 shi 32 trans 0
+MATERIAL "DefaultWhite" rgb 1 1 1 amb 1 1 1 emis 0.149 0.149 0.149 spec 0.502 0.502 0.502 shi 64 trans 0
 MATERIAL "ac3dmat1.001" rgb 0.82 0.827 0.82 amb 0.2 0.2 0.2 emis 0 0 0 spec 0.502 0.502 0.502 shi 17 trans 0
 MATERIAL "illum" rgb 0.988889 0.988889 0.988889 amb 0.201149 0.201149 0.201149 emis 0.7 0.7 0.7 spec 0 0 0 shi 32 trans 0
 MATERIAL "ac3dmat0.001" rgb 0.027 0.027 0.02 amb 0.2 0.2 0.2 emis 0 0 0 spec 0 0 0 shi 10 trans 0
 OBJECT world
-kids 8
-OBJECT poly
-name "Needle10000"
-data 8
-Mesh.002
-crease 45.000000
-numvert 5
-0.000626 0.005835 -0.000912
-0.000626 -0.002912 -0.000912
-0.000626 -0.002912 0.000894
-0.000626 0.005835 0.000894
-0.000626 0.008034 -9e-006
-numsurf 2
-SURF 0x00
-mat 1
-refs 4
-0 0.0 0.0
-3 0.0 0.0
-2 0.0 0.0
-1 0.0 0.0
-SURF 0x00
-mat 1
-refs 3
-3 0.0 0.0
-0 0.0 0.0
-4 0.0 0.0
-kids 0
+kids 7
 OBJECT poly
 name "KnobDown"
 data 8
@@ -109,609 +83,609 @@ numvert 68
 0.008497 -0.023818 0.019704
 numsurf 96
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 0 0 0
 1 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 1 0 0
 2 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 2 0 0
 3 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 3 0 0
 4 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 4 0 0
 5 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 5 0 0
 6 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 6 0 0
 7 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 7 0 0
 8 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 8 0 0
 9 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 9 0 0
 10 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 10 0 0
 11 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 11 0 0
 12 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 12 0 0
 13 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 13 0 0
 14 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 14 0 0
 15 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 15 0 0
 16 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 16 0 0
 17 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 17 0 0
 18 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 18 0 0
 19 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 19 0 0
 20 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 20 0 0
 21 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 21 0 0
 22 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 22 0 0
 23 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 23 0 0
 24 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 24 0 0
 25 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 25 0 0
 26 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 26 0 0
 27 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 27 0 0
 28 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 28 0 0
 29 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 29 0 0
 30 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 30 0 0
 31 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 31 0 0
 32 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 32 0 0
 31 0 0
 36 0 0
 35 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 31 0 0
 30 0 0
 37 0 0
 36 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 30 0 0
 29 0 0
 38 0 0
 37 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 29 0 0
 28 0 0
 39 0 0
 38 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 28 0 0
 27 0 0
 40 0 0
 39 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 27 0 0
 26 0 0
 41 0 0
 40 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 26 0 0
 25 0 0
 42 0 0
 41 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 25 0 0
 24 0 0
 43 0 0
 42 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 24 0 0
 23 0 0
 44 0 0
 43 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 23 0 0
 22 0 0
 45 0 0
 44 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 22 0 0
 21 0 0
 46 0 0
 45 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 21 0 0
 20 0 0
 47 0 0
 46 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 20 0 0
 19 0 0
 48 0 0
 47 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 19 0 0
 18 0 0
 49 0 0
 48 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 18 0 0
 17 0 0
 50 0 0
 49 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 17 0 0
 16 0 0
 51 0 0
 50 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 16 0 0
 15 0 0
 52 0 0
 51 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 15 0 0
 14 0 0
 53 0 0
 52 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 14 0 0
 13 0 0
 54 0 0
 53 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 13 0 0
 12 0 0
 55 0 0
 54 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 12 0 0
 11 0 0
 56 0 0
 55 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 11 0 0
 10 0 0
 57 0 0
 56 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 10 0 0
 9 0 0
 58 0 0
 57 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 9 0 0
 8 0 0
 59 0 0
 58 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 8 0 0
 7 0 0
 60 0 0
 59 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 7 0 0
 6 0 0
 61 0 0
 60 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 6 0 0
 5 0 0
 62 0 0
 61 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 5 0 0
 4 0 0
 63 0 0
 62 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 4 0 0
 3 0 0
 64 0 0
 63 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 3 0 0
 2 0 0
 65 0 0
 64 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 2 0 0
 1 0 0
 66 0 0
 65 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 1 0 0
 0 0 0
 67 0 0
 66 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 66 0 0
 67 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 65 0 0
 66 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 64 0 0
 65 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 63 0 0
 64 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 62 0 0
 63 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 61 0 0
 62 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 60 0 0
 61 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 59 0 0
 60 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 58 0 0
 59 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 57 0 0
 58 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 56 0 0
 57 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 55 0 0
 56 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 54 0 0
 55 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 53 0 0
 54 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 52 0 0
 53 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 51 0 0
 52 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 50 0 0
 51 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 49 0 0
 50 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 48 0 0
 49 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 47 0 0
 48 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 46 0 0
 47 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 45 0 0
 46 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 44 0 0
 45 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 43 0 0
 44 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 42 0 0
 43 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 41 0 0
 42 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 40 0 0
 41 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 39 0 0
 40 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 38 0 0
 39 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 37 0 0
 38 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 36 0 0
 37 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 35 0 0
 36 0 0
@@ -730,14 +704,14 @@ numvert 5
 0.001843 0.021324 -9e-006
 numsurf 2
 SURF 0x00
-mat 1
+mat 2
 refs 4
 0 0.0 0.0
 3 0.0 0.0
 2 0.0 0.0
 1 0.0 0.0
 SURF 0x00
-mat 1
+mat 2
 refs 3
 3 0.0 0.0
 0 0.0 0.0
@@ -819,609 +793,609 @@ numvert 68
 0.008497 -0.017158 0.016945
 numsurf 96
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 0 0 0
 1 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 1 0 0
 2 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 2 0 0
 3 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 3 0 0
 4 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 4 0 0
 5 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 5 0 0
 6 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 6 0 0
 7 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 7 0 0
 8 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 8 0 0
 9 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 9 0 0
 10 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 10 0 0
 11 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 11 0 0
 12 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 12 0 0
 13 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 13 0 0
 14 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 14 0 0
 15 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 15 0 0
 16 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 16 0 0
 17 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 17 0 0
 18 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 18 0 0
 19 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 19 0 0
 20 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 20 0 0
 21 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 21 0 0
 22 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 22 0 0
 23 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 23 0 0
 24 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 25 0 0
 26 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 26 0 0
 27 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 27 0 0
 28 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 28 0 0
 29 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 29 0 0
 30 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 30 0 0
 31 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 33 0 0
 31 0 0
 32 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 32 0 0
 0 0 0
 33 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 0 0 0
 32 0 0
 35 0 0
 67 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 32 0 0
 31 0 0
 36 0 0
 35 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 31 0 0
 30 0 0
 37 0 0
 36 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 30 0 0
 29 0 0
 38 0 0
 37 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 29 0 0
 28 0 0
 39 0 0
 38 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 28 0 0
 27 0 0
 40 0 0
 39 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 27 0 0
 26 0 0
 41 0 0
 40 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 26 0 0
 25 0 0
 42 0 0
 41 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 24 0 0
 23 0 0
 44 0 0
 43 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 23 0 0
 22 0 0
 45 0 0
 44 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 22 0 0
 21 0 0
 46 0 0
 45 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 21 0 0
 20 0 0
 47 0 0
 46 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 20 0 0
 19 0 0
 48 0 0
 47 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 19 0 0
 18 0 0
 49 0 0
 48 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 18 0 0
 17 0 0
 50 0 0
 49 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 17 0 0
 16 0 0
 51 0 0
 50 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 16 0 0
 15 0 0
 52 0 0
 51 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 15 0 0
 14 0 0
 53 0 0
 52 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 14 0 0
 13 0 0
 54 0 0
 53 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 13 0 0
 12 0 0
 55 0 0
 54 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 12 0 0
 11 0 0
 56 0 0
 55 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 11 0 0
 10 0 0
 57 0 0
 56 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 10 0 0
 9 0 0
 58 0 0
 57 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 9 0 0
 8 0 0
 59 0 0
 58 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 8 0 0
 7 0 0
 60 0 0
 59 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 7 0 0
 6 0 0
 61 0 0
 60 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 6 0 0
 5 0 0
 62 0 0
 61 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 5 0 0
 4 0 0
 63 0 0
 62 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 4 0 0
 3 0 0
 64 0 0
 63 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 3 0 0
 2 0 0
 65 0 0
 64 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 2 0 0
 1 0 0
 66 0 0
 65 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 4
 1 0 0
 0 0 0
 67 0 0
 66 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 66 0 0
 67 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 65 0 0
 66 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 64 0 0
 65 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 63 0 0
 64 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 62 0 0
 63 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 61 0 0
 62 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 60 0 0
 61 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 59 0 0
 60 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 58 0 0
 59 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 57 0 0
 58 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 56 0 0
 57 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 55 0 0
 56 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 54 0 0
 55 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 53 0 0
 54 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 52 0 0
 53 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 51 0 0
 52 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 50 0 0
 51 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 49 0 0
 50 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 48 0 0
 49 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 47 0 0
 48 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 46 0 0
 47 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 45 0 0
 46 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 44 0 0
 45 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 43 0 0
 44 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 41 0 0
 42 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 40 0 0
 41 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 39 0 0
 40 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 38 0 0
 39 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 37 0 0
 38 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 36 0 0
 37 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 35 0 0
 36 0 0
 34 0 0
 SURF 0x20
-mat 2
+mat 1
 refs 3
 34 0 0
 67 0 0
@@ -1442,20 +1416,20 @@ numvert 7
 0.001299 0.012737 -9e-006
 numsurf 3
 SURF 0x00
-mat 1
+mat 2
 refs 3
 3 0.0 0.0
 0 0.0 0.0
 6 0.0 0.0
 SURF 0x00
-mat 1
+mat 2
 refs 4
 0 0.0 0.0
 3 0.0 0.0
 4 0.0 0.0
 5 0.0 0.0
 SURF 0x00
-mat 1
+mat 2
 refs 4
 1 0.0 0.0
 5 0.0 0.0
@@ -1491,98 +1465,98 @@ numsurf 16
 SURF 0x00
 mat 3
 refs 3
-0 0.865608155727 0.5
-1 0.83777731657 0.639912366867
+0 0.979014396667 0.5
+1 0.942550897598 0.683311104774
 16 0.5 0.5
 SURF 0x00
 mat 3
 refs 3
-1 0.83777731657 0.639912366867
-2 0.758524417877 0.758524417877
+1 0.942550897598 0.683311104774
+2 0.838714838028 0.838714838028
 16 0.5 0.5
 SURF 0x00
 mat 3
 refs 3
-2 0.758524417877 0.758524417877
-3 0.639912366867 0.837777972221
+2 0.838714838028 0.838714838028
+3 0.683311104774 0.942551672459
 16 0.5 0.5
 SURF 0x00
 mat 3
 refs 3
-3 0.639912366867 0.837777972221
-4 0.5 0.865608155727
+3 0.683311104774 0.942551672459
+4 0.5 0.979014396667
 16 0.5 0.5
 SURF 0x00
 mat 3
 refs 3
-4 0.5 0.865608155727
-5 0.360087603331 0.837777972221
+4 0.5 0.979014396667
+5 0.316688865423 0.942551672459
 16 0.5 0.5
 SURF 0x00
 mat 3
 refs 3
-5 0.360087603331 0.837777972221
-6 0.241475582123 0.758524417877
+5 0.316688865423 0.942551672459
+6 0.16128513217 0.838714838028
 16 0.5 0.5
 SURF 0x00
 mat 3
 refs 3
-6 0.241475582123 0.758524417877
-7 0.162221968174 0.639912366867
+6 0.16128513217 0.838714838028
+7 0.0574482381344 0.683311104774
 16 0.5 0.5
 SURF 0x00
 mat 3
 refs 3
-7 0.162221968174 0.639912366867
-8 0.134391844273 0.5
+7 0.0574482381344 0.683311104774
+8 0.0209856033325 0.5
 16 0.5 0.5
 SURF 0x00
 mat 3
 refs 3
-8 0.134391844273 0.5
-9 0.162221968174 0.360087603331
+8 0.0209856033325 0.5
+9 0.0574482381344 0.316688865423
 16 0.5 0.5
 SURF 0x00
 mat 3
 refs 3
-9 0.162221968174 0.360087603331
-10 0.241475582123 0.241475582123
+9 0.0574482381344 0.316688865423
+10 0.16128513217 0.16128513217
 16 0.5 0.5
 SURF 0x00
 mat 3
 refs 3
-10 0.241475582123 0.241475582123
-11 0.360087603331 0.162222892046
+10 0.16128513217 0.16128513217
+11 0.316688865423 0.0574494302273
 16 0.5 0.5
 SURF 0x00
 mat 3
 refs 3
-11 0.360087603331 0.162222892046
-12 0.5 0.134391844273
+11 0.316688865423 0.0574494302273
+12 0.5 0.0209856033325
 16 0.5 0.5
 SURF 0x00
 mat 3
 refs 3
-12 0.5 0.134391844273
-13 0.639912366867 0.162222892046
+12 0.5 0.0209856033325
+13 0.683311104774 0.0574494302273
 16 0.5 0.5
 SURF 0x00
 mat 3
 refs 3
-13 0.639912366867 0.162222892046
-14 0.758524417877 0.241475582123
+13 0.683311104774 0.0574494302273
+14 0.838714838028 0.16128513217
 16 0.5 0.5
 SURF 0x00
 mat 3
 refs 3
-14 0.758524417877 0.241475582123
-15 0.83777731657 0.360087603331
+14 0.838714838028 0.16128513217
+15 0.942550897598 0.316688865423
 16 0.5 0.5
 SURF 0x00
 mat 3
 refs 3
-15 0.83777731657 0.360087603331
-0 0.865608155727 0.5
+15 0.942550897598 0.316688865423
+0 0.979014396667 0.5
 16 0.5 0.5
 kids 0
 OBJECT poly
@@ -1593,27 +1567,27 @@ texture "altimeter.rgb"
 texrep 1 1
 crease 30.000000
 numvert 6
-0.000668 -0.004171 -0.01947
-0.000668 0.000326 -0.019899
-0.000668 0.004824 -0.01947
-0.000666 -0.002823 -0.012908
-0.000666 0.000326 -0.013208
-0.000666 0.003475 -0.012908
+0.000668 -0.002148 -0.021419
+0.000668 0.000352 -0.021658
+0.000668 0.002852 -0.021419
+0.000667 -0.001398 -0.013533
+0.000667 0.000352 -0.013548
+0.000667 0.002102 -0.013533
 numsurf 2
 SURF 0x00
 mat 4
 refs 4
-0 0.0878470018506 0.198103994131
-1 0.101758003235 0.167401999235
-4 0.146411001682 0.193182006478
-3 0.136672005057 0.214678004384
+0 0.0793858170509 0.181214630604
+1 0.0893806666136 0.158874645829
+4 0.158120691776 0.197894021869
+3 0.149825036526 0.212801888585
 SURF 0x00
 mat 4
 refs 4
-5 0.160157993436 0.173999994993
-4 0.146411001682 0.193182006478
-1 0.101758003235 0.167401999235
-2 0.121391996741 0.140002995729
+5 0.166665703058 0.183133885264
+4 0.158120691776 0.197894021869
+1 0.0893806666136 0.158874645829
+2 0.103438645601 0.138841092587
 kids 0
 OBJECT poly
 name "bezeloutside"

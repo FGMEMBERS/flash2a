@@ -5,7 +5,7 @@
 
   <description>Mainair Flash 2 Alpha</description>
   <author>Stuart Buchanan</author>
-  <status>alpha</status>
+  <status>beta</status>
 
   <flight-model archive="y">jsb</flight-model>
   <aero archive="y">flash2a</aero>
@@ -16,7 +16,40 @@
 
   <help>
    <title>Flash 2 Alpha</title>
-   <line>Vx 42 mph</line>
+   <line>Speeds:</line>
+   <line>Vy  42 mph</line>
+   <line>Vne 89 mph</line>
+   <line>Cruise 49 mph</line>
+   <line>Min approach (engine idle): 42 mph</line>
+   <line></line>
+   <line>Take-off run (clear 15m obstacle): 230m</line>
+   <line>Landing run (clear 15m obstacle): 181m</line>
+   <line></line>
+   <line>Climb Rate: 500 fpm</line>
+   <line>Descent Rate: 550fpm</line>
+   <line></line>
+   <line>Max wind operation conditions</line>
+   <line>Headwind - 18 kts </line>
+   <line>Crosswind - 8 kts </line>
+   <line></line>
+   <line>_STARTUP_CHECKLIST_</line>
+   <line>S - Security</line>
+   <line>T - Hand Throttle closed (on left side).</line>
+   <line>A - All Clear</line>
+   <line>M - Magnetoes on (on right side)</line>
+   <line>P - Clear Prop, pull starter (under panel)</line>
+
+   <line></line>
+   <line>_RUN_UP_CHECKLIST_</line>
+   <line>C - Controls - full and free movement</line>
+   <line>H - Harness - secure</line>
+   <line>I - Instruments - set altimeter, check other gauges</line>
+   <line>E - Engines - check choke, magneto check</line>
+   <line>F - Fuel</line>
+   <line></line>
+   <line>T - Trim (none present), check whizz-pins</line>
+   <line>A - All Clear</line>
+   <line>P - Power - full power on take-off</line>
   </help>
  
   <panel>
@@ -29,9 +62,9 @@
    <internal archive="y">true</internal>
    <config>
      <x-offset-m archive="y">0.0</x-offset-m>
-     <y-offset-m archive="y">0.7</y-offset-m>
+     <y-offset-m archive="y">0.65</y-offset-m>
      <z-offset-m archive="y">1.3</z-offset-m>
-     <pitch-offset-deg>-15.0</pitch-offset-deg>
+     <pitch-offset-deg>-10.0</pitch-offset-deg>
    </config>
   </view>
 
@@ -56,10 +89,13 @@
   <flight>
    <aileron-trim>0.027</aileron-trim>
    <rudder-trim>0.0</rudder-trim>
+   <elevator-trim>-0.091</elevator-trim>
+
   </flight>
   <engines>
    <engine n="0">
     <magnetos>0</magnetos>
+    <handthrottle>0.0</handthrottle>
    </engine>
   </engines>
  </controls>
@@ -80,10 +116,10 @@
  <consumables>
   <fuel>
    <tank n="0">
-    <level-gal_us>20</level-gal_us>
+    <level-gal_us>5.28</level-gal_us>
    </tank>
    <tank n="1">
-    <level-gal_us>20</level-gal_us>
+    <level-gal_us>5.28</level-gal_us>
    </tank>
   </fuel>
  </consumables>
@@ -101,7 +137,7 @@
   
  <engines>
   <engine>
-   <rpm type="double">700</rpm>
+   <rpm type="double">0</rpm>
   </engine>
  </engines>
 
@@ -115,6 +151,12 @@
     </config>
   </jsbsim>
 </fdm>
+
+<nasal>
+  <handthrottle>
+    <file>Aircraft/flash2a/Nasal/handthrottle.nas</file>
+  </handthrottle>
+</nasal>
 
   
 </PropertyList>
