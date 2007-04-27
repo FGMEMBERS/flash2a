@@ -29,7 +29,7 @@ checkHandThrottle = func {
   settimer(checkHandThrottle, 0.25);
 }
 
-_setlistener("/sim/signals/fdm-initialized", checkHandThrottle);
+setlistener("/sim/signals/fdm-initialized", checkHandThrottle);
 
 
 
