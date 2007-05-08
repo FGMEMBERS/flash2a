@@ -7,6 +7,10 @@
   <author>Stuart Buchanan</author>
   <status>beta</status>
 
+  <startup>
+    <splash-texture>Aircraft/flash2a/flash2a-splash.rgb</splash-texture>
+  </startup>
+
   <flight-model archive="y">jsb</flight-model>
   <aero archive="y">flash2a</aero>
 
@@ -16,7 +20,7 @@
 
   <help>
    <title>Flash 2 Alpha</title>
-   <line>Speeds:</line>
+   <line>SPEEDS:</line>
    <line>Vy  42 mph</line>
    <line>Vne 89 mph</line>
    <line>Cruise 49 mph</line>
@@ -32,25 +36,39 @@
    <line>Headwind - 18 kts </line>
    <line>Crosswind - 8 kts </line>
    <line></line>
-   <line>_STARTUP_CHECKLIST_</line>
-   <line>S - Security</line>
-   <line>T - Hand Throttle closed (on left side).</line>
-   <line>A - All Clear</line>
-   <line>M - Magnetoes on (on right side)</line>
-   <line>P - Clear Prop, pull starter (under panel)</line>
-
+   <line>HANDLING NOTES</line>
    <line></line>
-   <line>_RUN_UP_CHECKLIST_</line>
-   <line>C - Controls - full and free movement</line>
-   <line>H - Harness - secure</line>
-   <line>I - Instruments - set altimeter, check other gauges</line>
-   <line>E - Engines - check choke, magneto check</line>
-   <line>F - Fuel</line>
+   <line>Flying a flexwing microlight is done purely based on nose attitude - where the</line>
+   <line>nose is relative to the horizon for pitch, and the angle of the center-post to</line>
+   <line>the horizon for roll. There are particular nose attitudes for cruise, climb and </line>
+	<line>descent. Changing from, say, cruise to climb, involves changing the power </line>
+	<line>setting then placing the nose in the correct attitude and bringing the </line>
+    <line>bar back to neutral.</line>
    <line></line>
-   <line>T - Trim (none present), check whizz-pins</line>
-   <line>A - All Clear</line>
-   <line>P - Power - full power on take-off</line>
-  </help>
+   <line>TAKE OFF : Full power, as aircraft accelerates, slowly move the bar forward. </line>
+   <line>Once in the air, bring the bar to neutral and pull in slightly to keep </line>
+   <line>airspeed high below 100ft AGL. Above this height push the bar slightly </line>
+   <line>forward for a Vx climb.</line>
+   <line>CROSS-WIND TAKE OFF : As above, but move the bar firmly forward only </line>
+   <line>once flying speed has been reached.</line>
+   <line>CLIMB: Apply full power, push bar forward to set attitude, then bring</line>
+   <line>it neutral to trim.</line>
+   <line>CRUISE: Tune power for level flight (there is no trim), bar neutral.</line>
+   <line>DESCENT: Idle power, pull bar in to set attitude, then bring to neutral </line>
+   <line>to trim. Warm the engine every 400ft by applying a small burst of power, </line>
+   <line>pulling in the bar to avoid the nose climbing, then releasing it slowly </line>
+   <line>as speed decays again.</line>
+   <line>GLIDE LANDING: From base or final, enter descent. On final, gradually</line>
+   <line>pull bar in for a minimum approach speed of 55mph. Round out at 30ft, </line>
+   <line>then flare by pushing the bar out.</line>
+   <line>POWERED LANDING: From downwind, make a small reduction in power to enter </line>
+   <line>a gradual descent. As you descend, bring the bar in or add power to keep </line>
+   <line>the aiming point constant. Again, minimum approach speed is 55mph. Round </line>
+   <line>out at 20ft, while cutting power. Flare by pushing the bar out.</line>
+   <line></line>
+   <line>The pro-pedals-usb.xml.flash2a file contains bindings for the CH </line>
+   <line>pedals - reverse steering, right foot throttle, left foot brake.</line>
+</help>
  
   <panel>
    <visibility archive="y">false</visibility>
@@ -89,7 +107,7 @@
   <flight>
    <aileron-trim>0.027</aileron-trim>
    <rudder-trim>0.0</rudder-trim>
-   <elevator-trim>-0.091</elevator-trim>
+   <elevator-trim>-0.12</elevator-trim>
 
   </flight>
   <engines>
@@ -144,8 +162,8 @@
 <fdm>
   <jsbsim>
     <config>
-      <Drag_at_zero_lift>0.5</Drag_at_zero_lift>
-      <Elevator_drag>1.0</Elevator_drag>
+      <Drag_at_zero_lift>0.1</Drag_at_zero_lift>
+      <Elevator_drag>0.75</Elevator_drag>
       <Induced_drag>0.01</Induced_drag>
       <Lift_due_to_alpha>1.0</Lift_due_to_alpha>
     </config>
