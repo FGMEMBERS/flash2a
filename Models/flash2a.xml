@@ -85,7 +85,7 @@
     <repeatable>true</repeatable>
     <binding>
       <command>property-adjust</command>
-      <property>/controls/engines/engine/handthrottle</property>
+      <property>controls/engines/engine/handthrottle</property>
       <step>-0.01</step>
       <min>0.0</min>
       <max>1.0</max>
@@ -98,7 +98,7 @@
     <repeatable>true</repeatable>
     <binding>
       <command>property-adjust</command>
-      <property>/controls/engines/engine/handthrottle</property>
+      <property>controls/engines/engine/handthrottle</property>
       <step>-0.1</step>
       <min>0.0</min>
       <max>1.0</max>
@@ -117,7 +117,7 @@
     <repeatable>true</repeatable>
     <binding>
       <command>property-adjust</command>
-      <property>/controls/engines/engine/handthrottle</property>
+      <property>controls/engines/engine/handthrottle</property>
       <step>0.01</step>
       <min>0.0</min>
       <max>1.0</max>
@@ -130,7 +130,7 @@
     <repeatable>true</repeatable>
     <binding>
       <command>property-adjust</command>
-      <property>/controls/engines/engine/handthrottle</property>
+      <property>controls/engines/engine/handthrottle</property>
       <step>0.1</step>
       <min>0.0</min>
       <max>1.0</max>
@@ -165,7 +165,7 @@
     <repeatable>false</repeatable>
     <binding>
       <command>property-adjust</command>
-      <property>/controls/engines/engine/magnetos</property>
+      <property>controls/engines/engine/magnetos</property>
       <step>-3.0</step>
       <min>0.0</min>
       <max>3.0</max>
@@ -183,7 +183,7 @@
     <repeatable>false</repeatable>
     <binding>
       <command>property-adjust</command>
-      <property>/controls/engines/engine/magnetos</property>
+      <property>controls/engines/engine/magnetos</property>
       <step>3.0</step>
       <min>0.0</min>
       <max>3.0</max>
@@ -285,7 +285,7 @@
   <object-name>Prop</object-name>
   <condition>
    <less-than>
-    <property>/engines/engine[0]/rpm</property>
+    <property>engines/engine[0]/rpm</property>
     <value>500</value>
    </less-than>
   </condition>
