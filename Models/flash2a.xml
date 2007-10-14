@@ -2,6 +2,7 @@
 
 <PropertyList>
 
+
  <path>flash2a.ac</path>
 
  <!-- 3D Instruments -->
@@ -17,6 +18,16 @@
  </model>
 
  <model>
+  <name>Compass</name>
+  <path>Aircraft/flash2a/Models/compass/compass.xml</path>
+  <offsets>
+   <x-m>0.67</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.305</z-m>
+  </offsets>
+ </model>
+
+ <model>
   <name>Altimeter</name>
   <path>Aircraft/flash2a/Models/alt/alt.xml</path>
   <offsets>
@@ -24,16 +35,6 @@
    <y-m>-0.06</y-m>
    <z-m>0.345</z-m>
    <pitch-deg>-38</pitch-deg>
-  </offsets>
- </model>
-
- <model>
-  <name>Compass</name>
-  <path>Aircraft/flash2a/Models/compass/compass.xml</path>
-  <offsets>
-   <x-m>0.67</x-m>
-   <y-m>0.0</y-m>
-   <z-m>0.305</z-m>
   </offsets>
  </model>
 
@@ -75,6 +76,7 @@
     </axis>
  </animation>
 
+<!-- 
  <animation>
   <type>pick</type>
   <object-name>HandThrottleDown</object-name>
@@ -138,6 +140,7 @@
     </binding>
   </action>
  </animation>
+-->
 
 <!-- Magneto Switch-->
 
@@ -156,6 +159,7 @@
     </axis>
  </animation>
 
+<!-- 
  <animation>
   <type>pick</type>
   <object-name>MagnetoOff</object-name>
@@ -191,6 +195,7 @@
     </binding>
   </action>
  </animation>
+-->
 
  <!-- Starter -->
  <animation>
@@ -216,7 +221,6 @@
  <animation>
   <type>select</type>
   <object-name>StarterHandle</object-name>
-  <object-name>StarterRope2</object-name>
   <condition>
    <equals>
     <property>engines/engine[0]/cranking</property>
@@ -235,29 +239,6 @@
     <value>true</value>
    </equals>
   </condition>
- </animation>
-
-  <!-- Level of Detail -->
- <animation>
-  <type>range</type>
-  <object-name>ASI</object-name>
-  <object-name>Altimeter</object-name>
-  <object-name>Compass</object-name>
-  <object-name>EGT</object-name>
-  <object-name>RPM</object-name>
-  <object-name>HandThrottle</object-name>
-  <object-name>MagnetoSwitch</object-name>
-  <object-name>StarterHandle</object-name>
-  <object-name>StarterRope2</object-name>
-  <object-name>StarterHandlePulled</object-name>
-  <object-name>StarterRope2Pulled</object-name>
-  <object-name>NoseWheel</object-name>
-  <object-name>NoseStrut</object-name>
-  <object-name>ControlBarStrap</object-name>
-  <object-name>ControlBarBolt1</object-name>
-  <object-name>ControlBarBolt2</object-name>
-  <min-m>0</min-m>
-  <max-m>50</max-m>
  </animation>
 
   <!-- Object movements -->
@@ -385,29 +366,5 @@
   </axis>
  </animation>
 
- <animation>
-  <type>shader</type>
-  <shader>chrome</shader>
-  <texture>chrome2.rgb</texture>
-  <object-name>FrontPost</object-name>
-  <object-name>ControlBar</object-name>
-  <object-name>TrikeKingPost</object-name>
-  <object-name>SeatFrame</object-name>
-  <object-name>Pitot</object-name>
-  <object-name>Cylinder.004</object-name>
-  <object-name>Cylinder.005</object-name>
-  <object-name>Cylinder.010</object-name>
-  <object-name>Cylinder.011</object-name>
-  <object-name>Cylinder.008</object-name>
-  <object-name>Cylinder.018</object-name>
-  <object-name>PropHub</object-name>
-  <object-name>TrikeKeel</object-name>
-  <object-name>Carb</object-name>
-  <object-name>KingPost</object-name>
-  <object-name>HandThrottle</object-name>
-  <object-name>HandThrottleMount</object-name>
-  <object-name>MagnetoSwitch</object-name>
-  <object-name>MagnetoSwitch2</object-name>
- </animation>
  
 </PropertyList>
