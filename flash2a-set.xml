@@ -6,6 +6,12 @@
   <description>Mainair Flash 2 Alpha</description>
   <author>Stuart Buchanan</author>
   <status>beta</status>
+  <rating>
+    <FDM type="int">1</FDM>
+    <systems type="int">3</systems>
+    <cockpit type="int">4</cockpit>
+    <model type="int">3</model>
+  </rating>
 
   <startup>
     <splash-texture>Aircraft/flash2a/flash2a-splash.rgb</splash-texture>
