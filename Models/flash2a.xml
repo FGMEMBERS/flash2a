@@ -59,6 +59,13 @@
    <pitch-deg>-38</pitch-deg>
   </offsets>
  </model>
+
+<!-- Transparent Surfaces for Rembrandt rendering -->
+ <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <object-name>Visor</object-name>
+ </effect>
+
   
 <!-- Hand Throttle -->
   <animation>
