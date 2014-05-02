@@ -10,7 +10,7 @@
     <FDM type="int">1</FDM>
     <systems type="int">3</systems>
     <cockpit type="int">4</cockpit>
-    <model type="int">3</model>
+    <model type="int">4</model>
   </rating>
 
   <startup>
@@ -22,10 +22,27 @@
 
   <model>
    <path archive="y">Aircraft/flash2a/Models/flash2a.xml</path>
+   <flash2a>
+    <on_ground type="bool">0</on_ground>
+    <pilot type="bool">1</pilot>
+    <passenger type="bool">0</passenger>
+   </flash2a>
   </model>
+
+  <multiplay>
+   <generic>
+    <int n="0" alias="/sim/model/flash2a/on_ground"/>
+    <int n="1" alias="/sim/model/flash2a/pilot"/>
+    <int n="2" alias="/sim/model/flash2a/passenger"/>
+   </generic>
+  </multiplay>
 
   <help>
    <title>Flash 2 Alpha</title>
+   <key>
+    <name>O</name>
+    <desc>opens aerotow-hook</desc>
+   </key>
    <line>SPEEDS:</line>
    <line>Vy  42 mph</line>
    <line>Vne 89 mph</line>
@@ -74,7 +91,49 @@
    <line></line>
    <line>The pro-pedals-usb.xml.flash2a file contains bindings for the CH </line>
    <line>pedals - reverse steering, right foot throttle, left foot brake.</line>
-</help>
+  </help>
+
+  <menubar>
+   <default>
+    <menu n="10">
+     <label>Flash2a</label>
+     <enabled type="bool">true</enabled>     
+     <item>
+      <label>Configure Controls</label>
+       <binding>
+        <command>nasal</command>
+        <script>flash2a.controls_dialog.open()</script>
+       </binding>
+     </item>    
+
+     <item>
+      <label>Toggle With/Without Pilot </label>
+       <binding>
+        <command>property-toggle</command>
+        <property>sim/model/flash2a/pilot</property>
+        <value>0</value>
+       </binding>
+     </item>    
+
+     <item>
+      <label>Toggle With/Without Passenger </label>
+       <binding>
+        <command>property-toggle</command>
+        <property>sim/model/flash2a/passenger</property>
+        <value>0</value>
+       </binding>
+     </item>    
+
+     <item>
+       <label>Aerotow Settings</label>
+       <binding>
+         <command>nasal</command>
+         <script>flash2a.aerotow_dialog.open()</script>
+       </binding>
+     </item>    
+    </menu>
+   </default>
+  </menubar>
  
   <panel>
    <visibility archive="y">false</visibility>
@@ -85,10 +144,76 @@
   <view>
    <internal archive="y">true</internal>
    <config>
+   <!--
      <x-offset-m archive="y">0.0</x-offset-m>
      <y-offset-m archive="y">0.65</y-offset-m>
      <z-offset-m archive="y">1.3</z-offset-m>
      <pitch-offset-deg>-10.0</pitch-offset-deg>
+   -->
+     <x-offset-m archive="y">0.0</x-offset-m>
+     <y-offset-m archive="y">0.8526</y-offset-m>
+     <z-offset-m archive="y">1.188</z-offset-m>
+     <pitch-offset-deg>-20.0</pitch-offset-deg>
+   </config>
+  </view>
+
+  <view n="1">
+   <config>
+     <target-y-offset-m archive="y" type="double">0.50</target-y-offset-m>
+     <target-z-offset-m archive="y" type="double">1.57</target-z-offset-m>
+   </config>
+  </view>
+  <view n="2">
+   <config>
+     <target-y-offset-m archive="y" type="double">0.50</target-y-offset-m>
+     <target-z-offset-m archive="y" type="double">1.57</target-z-offset-m>
+   </config>
+  </view>
+  <view n="3">
+   <config>
+     <target-y-offset-m archive="y" type="double">0.50</target-y-offset-m>
+     <target-z-offset-m archive="y" type="double">1.57</target-z-offset-m>
+   </config>
+  </view>
+  <view n="4">
+   <config>
+     <target-y-offset-m archive="y" type="double">0.50</target-y-offset-m>
+     <target-z-offset-m archive="y" type="double">1.57</target-z-offset-m>
+   </config>
+  </view>
+  <view n="5">
+   <config>
+     <target-y-offset-m archive="y" type="double">0.50</target-y-offset-m>
+     <target-z-offset-m archive="y" type="double">1.57</target-z-offset-m>
+   </config>
+  </view>
+  <view n="6">
+   <config>
+     <target-y-offset-m archive="y" type="double">0.50</target-y-offset-m>
+     <target-z-offset-m archive="y" type="double">1.57</target-z-offset-m>
+   </config>
+  </view>
+
+  <view n="100">
+   <name>Pilot View Animated</name>
+   <enabled type="bool">true</enabled>
+   <internal type="bool">true</internal>
+   <type>lookfrom</type>
+   <config>
+     <from-model type="bool">true</from-model>
+     <from-model-idx type="int">0</from-model-idx>
+     <!--
+     <x-offset-m archive="y">0.0</x-offset-m>
+     <y-offset-m archive="y">0.65</y-offset-m>
+     <z-offset-m archive="y">1.3</z-offset-m>
+     <pitch-offset-deg>-10.0</pitch-offset-deg>
+     <heading-offset-deg type="double">0.</heading-offset-deg>
+     -->
+     <x-offset-m archive="y">0.0</x-offset-m>
+     <y-offset-m archive="y">0.8526</y-offset-m>
+     <z-offset-m archive="y">1.188</z-offset-m>
+     <pitch-offset-deg>-20.0</pitch-offset-deg>
+     <heading-offset-deg type="double">0.</heading-offset-deg>
    </config>
   </view>
 
@@ -105,7 +230,45 @@
    <path archive="y">Aircraft/flash2a/flash2a-sound.xml</path>
   </sound>
 
+  <hitches>
+   <aerotow>
+    <force_name_jsbsim type="string">hitch</force_name_jsbsim>
+    <local-pos-x type="float">2.3</local-pos-x>
+    <local-pos-y type="float">0.</local-pos-y>
+    <local-pos-z type="float">0.552</local-pos-z>
+    <force-is-calculated-by-other type="bool">true</force-is-calculated-by-other>
+    <mp-auto-connect-period type="float">1.0</mp-auto-connect-period>
+    <tow>
+     <brake-force type="float">1200</brake-force>
+    </tow>
+    <rope>
+     <rope-diameter-mm type="float">8</rope-diameter-mm>
+    </rope>
+   </aerotow>
+  </hitches>
+ 
+  <aircraft-data>
+    <path>/sim/model/flash2a/custom-control</path> 
+    <path>/sim/model/flash2a/pilot</path>
+    <path>/sim/model/flash2a/passenger</path>
+    <path>/sim/hitches/aerotow/tow/brake-force</path>
+    <path>/sim/hitches/aerotow/rope/rope-diameter-mm</path>
+  </aircraft-data>
+
  </sim>
+
+ <input> 
+  <keyboard> 
+   <key n="79">
+     <name>O</name>
+     <desc>Open aerotow-hook</desc>
+     <binding>
+    <command>nasal</command>
+    <script>towing.releaseHitch("aerotow")</script>
+     </binding>
+   </key>
+  </keyboard> 
+ </input>
   
  <!-- trim for level cruise -->
 
@@ -165,7 +328,7 @@
   </engine>
  </engines>
 
-<fdm>
+ <fdm>
   <jsbsim>
     <config>
       <Drag_at_zero_lift>0.1</Drag_at_zero_lift>
@@ -174,13 +337,19 @@
       <Lift_due_to_alpha>1.0</Lift_due_to_alpha>
     </config>
   </jsbsim>
-</fdm>
+ </fdm>
 
-<nasal>
+ <nasal>
   <handthrottle>
     <file>Aircraft/flash2a/Nasal/handthrottle.nas</file>
   </handthrottle>
-</nasal>
+  <flash2a>
+    <file>Aircraft/flash2a/Nasal/CustomControls.nas</file>  
+    <file>Aircraft/flash2a/Nasal/SetDefaults.nas</file>
+    <file>Aircraft/flash2a/Nasal/dialogs.nas</file>
+    <file>Aircraft/flash2a/Nasal/Animations.nas</file>
+  </flash2a>
+ </nasal>
 
   
 </PropertyList>

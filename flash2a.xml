@@ -154,6 +154,21 @@
 
  </ground_reactions>
 
+ <external_reactions>
+  <force name="hitch" frame="BODY" unit="LBS" >
+   <location unit="M">
+    <x>2.3</x>  
+    <y>0.0</y>
+    <z>0.5523</z>
+   </location>
+   <direction>
+    <x>0.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </direction>
+  </force>
+ </external_reactions>
+ 
  <propulsion>
 
    <engine file="503">
@@ -208,7 +223,7 @@
 
   <channel name="Pitch">
    <summer name="Pitch Trim Sum">
-      <input>fcs/elevator-cmd-norm</input>
+      <input>/controls/flight/elevator_custom</input>
       <input>fcs/pitch-trim-cmd-norm</input>
       <clipto>
         <min> -1 </min>
@@ -225,11 +240,17 @@
       <output>fcs/elevator-pos-rad</output>
    </aerosurface_scale>
 
+   <pure_gain name="Elevator Custom Control">
+     <input>/controls/flight/elevator_custom</input> 
+     <gain>1.</gain>
+     <output>fcs/elevator-pos-norm</output>
+   </pure_gain>
+
   </channel>
 
   <channel name="Roll">
    <summer name="Roll Trim Sum">
-      <input>fcs/aileron-cmd-norm</input>
+      <input>/controls/flight/aileron_custom</input>
       <input>fcs/roll-trim-cmd-norm</input>
       <clipto>
         <min> -1 </min>
@@ -255,6 +276,12 @@
       <output>fcs/right-aileron-pos-rad</output>
    </aerosurface_scale>
 
+   <pure_gain name="Aileron Custom Control">
+     <input>/controls/flight/aileron_custom</input>
+     <gain>1.</gain>
+     <output>fcs/left-aileron-pos-norm</output>
+   </pure_gain>
+
   </channel>
 
   <channel name="Yaw">
@@ -275,6 +302,12 @@
       </range>
       <output>fcs/rudder-pos-rad</output>
    </aerosurface_scale>
+
+   <pure_gain name="Steering Norm">
+     <input>fcs/rudder-cmd-norm</input> 
+     <gain>-1.</gain>
+     <output>fcs/rudder-pos-norm</output>
+   </pure_gain>
 
   </channel>
 
@@ -471,9 +504,10 @@
        <product>
            <property>aero/qbar-psf</property>
            <property>metrics/Sw-sqft</property>
+           <!--
            <table>
-             <independentVar lookup="row">fcs/elevator-pos-norm</independentVar>
-             <tableData>
+            <independentVar lookup="row">fcs/elevator-pos-norm</independentVar>
+	     <tableData>
               -1.0       1.0
               -0.20      0.05
                0.00      0.035
@@ -481,6 +515,8 @@
                1.0       1.0
              </tableData>
            </table>
+           -->
+	   <value>0.035</value>
            <property>config/Elevator_drag</property>
        </product>
     </function>

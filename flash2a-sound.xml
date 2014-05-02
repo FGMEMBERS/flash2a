@@ -173,12 +173,28 @@
    </pitch>
   </wind>
  
-<!-- no binding yet?
-  <click>
-   <name>click</name>
+ <magneto_switch_on>
+   <name>magneto switch on</name>
+   <mode>once</mode>
    <path>Sounds/click.wav</path>
-  </click>
--->
+   <condition>
+     <greater-than>     
+      <property>/controls/engines/engine/magnetos</property>
+      <value>0</value>
+     </greater-than>
+   </condition>
+ </magneto_switch_on>
+ <magneto_switch_off>
+   <name>magneto switch off</name>
+   <mode>once</mode>
+   <path>Sounds/click.wav</path>
+   <condition>
+     <equals>     
+      <property>/controls/engines/engine/magnetos</property>
+      <value>0</value>
+     </equals>
+   </condition>
+ </magneto_switch_off>
 
 </fx>
  
