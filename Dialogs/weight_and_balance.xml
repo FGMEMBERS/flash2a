@@ -1,0 +1,717 @@
+<?xml version="1.0"?>
+<!-- version: 2014-06-01 -->
+<PropertyList>
+  <name>weight_and_balance_dialog</name>
+  <layout>vbox</layout>
+  <default-padding>1</default-padding>
+  <modal>false</modal>
+  <width>600</width>
+
+<!-- Title bar with close button -->
+  <group>
+    <layout>hbox</layout><equal>true</equal>
+    <default-padding>1</default-padding>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+    <text>
+      <label>Weight and Balance Settings</label>
+      <font>
+        <name>times_bold</name>
+      </font>
+    </text>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+    <button>
+      <legend/>
+      <key>Esc</key>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <border>2</border>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+
+  <hrule/>
+  <hrule/> 
+    
+<!-- glider weight setting -->
+  <group>
+    <layout>hbox</layout><equal>true</equal> 
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>  
+      <text>
+        <halign>left</halign>
+        <label>Wing Weight</label>
+      </text>
+    </frame>
+    
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+        <frame>
+          <layout>hbox</layout>
+          <halign>center</halign>
+          <text>
+            <label>999999999</label>
+            <live>true</live>
+            <format>  %3.1f lbs</format>
+            <property>/fdm/jsbsim/inertia/empty-weight-lbs</property>
+            <color>
+              <red>0.</red>
+              <green>1.</green>
+              <blue>1.</blue>
+            </color>
+          </text>
+        </frame>
+
+        <frame>
+          <layout>hbox</layout>
+          <halign>center</halign>
+          <text>
+            <label>9999999999</label>
+            <live>true</live>
+            <format>  %3.1f kg</format>
+            <property>/fdm/jsbsim/inertia/empty-weight-kg</property>
+            <color>
+              <red>0.</red>
+              <green>1.</green>
+              <blue>1.</blue>
+            </color>
+          </text>
+        </frame>
+    </frame> 
+     
+    <group>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <empty>
+        <stretch>true</stretch>
+      </empty>
+    </group>
+    
+  </group> 
+
+<!-- trike + engine  -->
+  <group>
+    <layout>hbox</layout><equal>true</equal>
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <text>
+        <halign>left</halign>
+        <label>Trike incl. Engine</label>
+      </text>
+    </frame>
+  
+    <frame> 
+    <layout>hbox</layout> 
+    <equal>true</equal>
+     
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.1f lbs</format>
+          <property>/fdm/jsbsim/inertia/pointmass-weight-lbs[0]</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.1f kg</format>
+          <property>/fdm/jsbsim/inertia/pointmass-weight-kg[0]</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+    </frame>  
+    
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal> 
+      <halign>center</halign>
+      <slider>
+        <name>pilots_weight</name>
+        <property>/fdm/jsbsim/inertia/pointmass-weight-kg[0]</property>
+        <min>0.0</min>
+        <max>200.0</max>
+	<step>5.</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+	<binding>
+          <command>nasal</command>
+          <script>flash2a.weight_and_balance()</script>
+        </binding>
+      </slider>
+    </frame>
+      
+  </group>
+
+<!-- pilot weight -->
+  <group>
+    <layout>hbox</layout><equal>true</equal>
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <text>
+        <halign>left</halign>
+        <label>Pilot</label>
+      </text>
+    </frame>
+  
+    <frame> 
+      <layout>hbox</layout> 
+      <equal>true</equal>
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.1f lbs</format>
+          <property>/fdm/jsbsim/inertia/pointmass-weight-lbs[1]</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.1f kg</format>
+          <property>/fdm/jsbsim/inertia/pointmass-weight-kg[1]</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+    </frame>  
+    
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal> 
+      <halign>center</halign>
+      <slider>
+        <name>CockpitLoadingFront</name>
+        <property>/fdm/jsbsim/inertia/pointmass-weight-kg[1]</property>
+        <min>55.0</min>
+        <max>90.0</max>
+	<step>1.</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+	<binding>
+          <command>nasal</command>
+          <script>flash2a.weight_and_balance()</script>
+        </binding>
+
+      </slider>
+    </frame>
+      
+  </group>
+
+
+<!-- passenger weight -->
+  <group>
+    <layout>hbox</layout><equal>true</equal>
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <text>
+        <halign>left</halign>
+        <label>Passenger</label>
+      </text>
+    </frame>
+  
+    <frame> 
+      <layout>hbox</layout> 
+      <equal>true</equal>
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.1f lbs</format>
+          <property>/fdm/jsbsim/inertia/pointmass-weight-lbs[2]</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.1f kg</format>
+          <property>/fdm/jsbsim/inertia/pointmass-weight-kg[2]</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+    </frame>  
+    
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal> 
+      <halign>center</halign>
+      <slider>
+        <name>CockpitLoadingRear</name>
+        <property>/fdm/jsbsim/inertia/pointmass-weight-kg[2]</property>
+        <min>15.0</min>
+        <max>90.0</max>
+	<step>1.</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+	<binding>
+          <command>nasal</command>
+          <script>flash2a.weight_and_balance()</script>
+        </binding>
+      </slider>
+    </frame>
+      
+  </group>
+
+
+<!-- fuel weight -->
+  <group>
+    <layout>hbox</layout><equal>true</equal>
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <text>
+        <halign>left</halign>
+        <label>Fuel</label>
+      </text>
+    </frame>
+  
+    <frame> 
+      <layout>hbox</layout> 
+      <equal>true</equal> 
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.1f lbs</format>
+          <property>/consumables/fuel/total-fuel-lbs</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.1f kg</format>
+          <property>/consumables/fuel/total-fuel-kg</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+    </frame>  
+    
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal> 
+      <halign>center</halign>
+      <slider>
+        <name>FuelTank</name>
+        <property>/consumables/fuel/tank/level-kg</property>
+        <min>0.0</min>
+        <max>15.6</max>
+	<step>0.5</step>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+	<binding>
+          <command>nasal</command>
+          <script>flash2a.weight_and_balance()</script>
+        </binding>
+      </slider>
+    </frame>
+      
+  </group>
+
+
+<!-- total weight  -->
+  <group>
+    <layout>hbox</layout><equal>true</equal>
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <text>
+        <halign>left</halign>
+        <label>Max. all-up weight</label>
+      </text>
+    </frame> 
+     
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.1f lbs</format>
+          <property>/fdm/jsbsim/inertia/weight-lbs</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+          
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.1f kg</format>
+          <property>/fdm/jsbsim/inertia/weight-kg</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+    </frame>  
+
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <text>
+        <label>Min: 518lbs / 235kg</label>
+      </text> 
+    </frame>  
+
+  </group>
+
+
+<!-- Weight of non lift producing components  -->
+  <group>
+    <layout>hbox</layout><equal>true</equal>
+
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+<!--
+      <text>
+        <halign>left</halign>
+        <label>Weight of non lift components</label>
+      </text>
+-->
+    </frame> 
+     
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+<!--
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.1f lbs</format>
+          <property>/fdm/jsbsim/inertia/weight_non_lift-lbs</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+          
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+ 
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.1f kg</format>
+          <property>/fdm/jsbsim/inertia/weight_non_lift-kg</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+
+      </frame>
+-->      
+    </frame>  
+
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <text>
+       <label> Max: 815lbs / 370kg </label>
+      </text> 
+    </frame>  
+
+  </group>
+
+
+  <hrule/>
+
+<!-- Wing Loading  -->
+  <group>
+    <layout>hbox</layout><equal>true</equal>
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <text>
+        <halign>left</halign>
+        <label>Wing Loading</label>
+      </text>
+    </frame> 
+     
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.1f lb/sqft</format>
+          <property>/fdm/jsbsim/inertia/wing_loading_lbsqft</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+          
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format> %3.1f kg/sqm</format>
+          <property>/fdm/jsbsim/inertia/wing_loading_kgsqm</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+    </frame>  
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <text>
+        <label>Max: 4.86 lb/sqft / 23.8 kg/sqm</label>
+      </text> 
+    </frame>  
+    
+  </group>
+  
+  
+  <hrule/>
+
+
+<!-- Trike CG position x  -->
+  <group>
+    <layout>hbox</layout><equal>true</equal>
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <text>
+        <halign>left</halign>
+        <label>Trike CG x-pos. (from hang point)</label>
+      </text>
+    </frame> 
+     
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.1f inch</format>
+	  <property>/fdm/jsbsim/systems/weightshift/distance_x_cg_trike2hp-in</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+          
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.2f m</format>
+          <property>/fdm/jsbsim/systems/weightshift/distance_x_cg_trike2hp-m</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+    </frame>       
+    <group>
+      <layout>hbox</layout>
+       <equal>true</equal>
+       <empty>
+         <stretch>true</stretch>
+       </empty>
+    </group>      
+  </group>
+
+  
+<!-- Trike CG position z  -->
+  <group>
+    <layout>hbox</layout><equal>true</equal>
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <text>
+        <halign>left</halign>
+        <label>Trike CG z-pos. (from hang point)</label>
+      </text>
+    </frame> 
+     
+    <frame>
+      <layout>hbox</layout>
+      <equal>true</equal>
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.1f inch</format>
+          <property>/fdm/jsbsim/systems/weightshift/distance_z_cg_trike2hp-in</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+          
+      <frame>
+        <layout>hbox</layout>
+        <halign>center</halign>
+        <text>
+          <label>9999999999</label>
+          <live>true</live>
+          <format>  %3.2f m</format>
+          <property>/fdm/jsbsim/systems/weightshift/distance_z_cg_trike2hp-m</property>
+          <color>
+            <red>0.</red>
+            <green>1.</green>
+            <blue>1.</blue>
+          </color>
+        </text>
+      </frame>
+    </frame>  
+    <group>
+      <layout>hbox</layout>
+       <equal>true</equal>
+       <empty>
+         <stretch>true</stretch>
+       </empty>
+    </group>      
+
+  </group>
+
+  <hrule/>
+  <hrule/>
+
+<!-- bottom line -->
+  <frame>
+    <layout>hbox</layout>
+    <default-padding>1</default-padding>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+    <button>
+      <legend>Set Defaults</legend>
+	<binding>
+          <command>nasal</command>
+          <script>flash2a.weight_and_balance_defaults()</script>
+        </binding>
+    </button>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+    <button>
+      <legend>Close</legend>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+  </frame>
+
+</PropertyList>

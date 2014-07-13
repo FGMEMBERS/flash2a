@@ -1,4 +1,12 @@
 
+Changes July 2014 by D-NXKT:
+
+- redesigned FDM with weightshift-control
+- weight and balance
+- emergency parachute
+- new thumbnail.jpg
+
+
 Changes April 2014 by D-NXKT:
 
 - new wing

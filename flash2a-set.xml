@@ -4,11 +4,13 @@
  <sim>
 
   <description>Mainair Flash 2 Alpha</description>
-  <author>Stuart Buchanan</author>
+  <author>Stuart Buchanan / D-NXKT</author>
+  <aircraft-version>July 2014</aircraft-version>
+
   <status>beta</status>
   <rating>
-    <FDM type="int">1</FDM>
-    <systems type="int">3</systems>
+    <FDM type="int">3</FDM>
+    <systems type="int">4</systems>
     <cockpit type="int">4</cockpit>
     <model type="int">4</model>
   </rating>
@@ -26,6 +28,8 @@
     <on_ground type="bool">0</on_ground>
     <pilot type="bool">1</pilot>
     <passenger type="bool">0</passenger>
+    <parachute type="bool">0</parachute>
+    <custom-control type="string">normal</custom-control>
    </flash2a>
   </model>
 
@@ -34,11 +38,18 @@
     <int n="0" alias="/sim/model/flash2a/on_ground"/>
     <int n="1" alias="/sim/model/flash2a/pilot"/>
     <int n="2" alias="/sim/model/flash2a/passenger"/>
+    <float n="0" alias="/fdm/jsbsim/fcs/parachute-pos-norm"/>
+    <float n="1" alias="/fdm/jsbsim/aero/alpha-deg"/>
+    <float n="2" alias="/fdm/jsbsim/aero/beta-deg"/>
    </generic>
   </multiplay>
 
   <help>
    <title>Flash 2 Alpha</title>
+   <key>
+     <name>] / [</name>
+     <desc>deploy / retract emergency parachute</desc>
+   </key>
    <key>
     <name>O</name>
     <desc>opens aerotow-hook</desc>
@@ -104,7 +115,21 @@
         <command>nasal</command>
         <script>flash2a.controls_dialog.open()</script>
        </binding>
+       <binding>
+        <command>nasal</command>
+        <script>
+          setprop("sim/model/flash2a/custom-control_previous", getprop("sim/model/flash2a/custom-control") );
+        </script>
+       </binding>
      </item>    
+
+     <item>
+      <label>Weight and Balance</label>
+       <binding>
+        <command>nasal</command>
+        <script>flash2a.weight_and_balance(); flash2a.weight_and_balance_dialog.open()</script>
+       </binding>
+     </item>	
 
      <item>
       <label>Toggle With/Without Pilot </label>
@@ -239,7 +264,7 @@
     <force-is-calculated-by-other type="bool">true</force-is-calculated-by-other>
     <mp-auto-connect-period type="float">1.0</mp-auto-connect-period>
     <tow>
-     <brake-force type="float">1200</brake-force>
+     <brake-force type="float">10000</brake-force>
     </tow>
     <rope>
      <rope-diameter-mm type="float">8</rope-diameter-mm>
@@ -251,6 +276,9 @@
     <path>/sim/model/flash2a/custom-control</path> 
     <path>/sim/model/flash2a/pilot</path>
     <path>/sim/model/flash2a/passenger</path>
+    <path>/fdm/jsbsim/inertia/pointmass-weight-kg[0]</path>
+    <path>/fdm/jsbsim/inertia/pointmass-weight-kg[1]</path>
+    <path>/fdm/jsbsim/inertia/pointmass-weight-kg[2]</path>
     <path>/sim/hitches/aerotow/tow/brake-force</path>
     <path>/sim/hitches/aerotow/rope/rope-diameter-mm</path>
   </aircraft-data>
@@ -263,10 +291,36 @@
      <name>O</name>
      <desc>Open aerotow-hook</desc>
      <binding>
-    <command>nasal</command>
-    <script>towing.releaseHitch("aerotow")</script>
+      <command>nasal</command>
+      <script>towing.releaseHitch("aerotow")</script>
      </binding>
    </key>
+
+   <key n="93">
+     <name>]</name>
+     <desc>Deploy parachute</desc>
+     <binding>
+      <command>property-assign</command>
+      <property>sim/model/flash2a/parachute</property>
+      <value>1</value>
+     </binding>
+     <binding>
+      <command>property-assign</command>
+      <property>controls/engines/engine/magnetos</property>
+      <value>0</value>
+     </binding>
+   </key>
+
+   <key n="91">
+     <name>[</name>
+     <desc>Retract parachute</desc>
+     <binding>
+      <command>property-assign</command>
+      <property>sim/model/flash2a/parachute</property>
+      <value>0</value>
+     </binding>
+   </key>
+
   </keyboard> 
  </input>
   
@@ -274,10 +328,9 @@
 
  <controls>
   <flight>
-   <aileron-trim>0.027</aileron-trim>
+   <aileron-trim>0.0</aileron-trim>
    <rudder-trim>0.0</rudder-trim>
-   <elevator-trim>-0.12</elevator-trim>
-
+   <elevator-trim>0.</elevator-trim>
   </flight>
   <engines>
    <engine n="0">
@@ -330,12 +383,11 @@
 
  <fdm>
   <jsbsim>
-    <config>
-      <Drag_at_zero_lift>0.1</Drag_at_zero_lift>
-      <Elevator_drag>0.75</Elevator_drag>
-      <Induced_drag>0.01</Induced_drag>
-      <Lift_due_to_alpha>1.0</Lift_due_to_alpha>
-    </config>
+    <inertia>
+      <pointmass-weight-kg type="double">100.</pointmass-weight-kg>
+      <pointmass-weight-kg type="double">75.</pointmass-weight-kg>
+      <pointmass-weight-kg type="double">15.</pointmass-weight-kg>
+    </inertia>
   </jsbsim>
  </fdm>
 
@@ -348,6 +400,7 @@
     <file>Aircraft/flash2a/Nasal/SetDefaults.nas</file>
     <file>Aircraft/flash2a/Nasal/dialogs.nas</file>
     <file>Aircraft/flash2a/Nasal/Animations.nas</file>
+    <file>Aircraft/flash2a/Nasal/weight_and_balance.nas</file>
   </flash2a>
  </nasal>
 

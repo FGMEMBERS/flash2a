@@ -40,6 +40,16 @@ var on_ground   = 0;
 if ( view_number == 0 ) on_ground = 1;
 if ( getprop("gear/gear[2]/wow")  == 1 and getprop("gear/gear[2]/wow") == 1 ) on_ground = 1;
 
+  ## fake smooth transition in animation
+  #if ( getprop("sim/model/flash2a/on_ground_old") == 1 ) {
+  #  if ( on_ground == 0 and getprop("surface-positions/elevator-pos-norm") > 0. ) {
+  #    on_ground = 1;
+  #    } else {
+  #    setprop("sim/model/flash2a/on_ground_old", 0 );
+  #  }
+  #}
+  #setprop("sim/model/flash2a/on_ground_old",on_ground);
+
 setprop("sim/model/flash2a/on_ground",on_ground);
 
 var mode = ["dummy","dummy","dummy"];

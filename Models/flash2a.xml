@@ -16,6 +16,12 @@
    rplayer.getNode("sim/model/flash2a/passenger", 1).
      alias(rplayer.getNode("sim/multiplay/generic/int[2]"));
    rplayer.getNode("sim/current-view/view-number", 1).setIntValue(1); # set view=1 to prevent deselected helmet     
+   rplayer.getNode("fdm/jsbsim/fcs/parachute-pos-norm", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[0]")); 
+   rplayer.getNode("fdm/jsbsim/aero/alpha-deg", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[1]")); 
+   rplayer.getNode("fdm/jsbsim/aero/beta-deg", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[2]")); 
     #print("flash2a loaded")
   </load>
 
@@ -23,6 +29,9 @@
    rplayer.getNode("sim/model/flash2a/on_ground", 1).unalias(); 
    rplayer.getNode("sim/model/flash2a/pilot", 1).unalias();
    rplayer.getNode("sim/model/flash2a/passenger", 1).unalias();
+   rplayer.getNode("fdm/jsbsim/fcs/parachute-pos-norm", 1).unalias(); 
+   rplayer.getNode("fdm/jsbsim/aero/alpha-deg", 1).unalias();
+   rplayer.getNode("fdm/jsbsim/aero/beta-deg", 1).unalias();
     #print("flash2a unloaded");
   </unload>
  </nasal>
@@ -326,6 +335,23 @@
  </animation>
 
  <animation>
+  <type>spin</type>  <!-- Unit = RPM  -->
+   <object-name>NoseWheel</object-name>
+    <property>gear/gear[0]/rollspeed-ms</property>
+    <factor>-75.548</factor>  
+    <center>
+      <x-m>0.2443</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-0.2161</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+ </animation>
+
+ <animation>
   <type>select</type>
   <object-name>Prop</object-name>
   <condition>
@@ -448,9 +474,10 @@
     <product>
      <property>surface-positions/elevator-pos-norm</property>
      <property>sim/model/flash2a/on_ground</property>
+     <!--<property>fdm/jsbsim/systems/groundhandling/on_ground</property>-->
     </product>
     <entry><ind>-1.0</ind> <dep>-6</dep></entry>
-    <entry><ind> 0.0</ind> <dep> 0</dep></entry>
+    <entry><ind> 0.0</ind> <dep> 3</dep></entry>
     <entry><ind> 1.0</ind> <dep>12</dep></entry>
    </table>
   </expression>
@@ -479,7 +506,7 @@
   <property>surface-positions/elevator-pos-norm</property>
   <interpolation>
    <entry><ind>-1.0</ind> <dep>  6</dep></entry>
-   <entry><ind> 0.0</ind> <dep>  0</dep></entry>
+   <entry><ind> 0.0</ind> <dep> -3</dep></entry>
    <entry><ind> 1.0</ind> <dep>-12</dep></entry>
   </interpolation>
   <center>
@@ -516,7 +543,7 @@
   <property>surface-positions/elevator-pos-norm</property>
   <interpolation>
    <entry><ind>-1.0</ind> <dep>-40</dep></entry>
-   <entry><ind>   0</ind> <dep>  0</dep></entry>
+   <entry><ind>   0</ind> <dep> 15</dep></entry>
    <entry><ind> 1.0</ind> <dep> 70</dep></entry>
   </interpolation>
   <center>
@@ -630,7 +657,7 @@
   <property>surface-positions/elevator-pos-norm</property>
   <interpolation>
    <entry><ind>-1.0</ind> <dep> 16</dep></entry>
-   <entry><ind>   0</ind> <dep>  0</dep></entry>
+   <entry><ind>   0</ind> <dep> -7</dep></entry>
    <entry><ind> 0.5</ind> <dep>-28</dep></entry>
    <entry><ind> 1.0</ind> <dep>-70</dep></entry>
   </interpolation>
@@ -678,7 +705,7 @@
   <property>surface-positions/elevator-pos-norm</property>
   <interpolation>
    <entry><ind>-1.0</ind> <dep> 40</dep></entry>
-   <entry><ind>   0</ind> <dep>  0</dep></entry>
+   <entry><ind>   0</ind> <dep>-15</dep></entry>
    <entry><ind> 1.0</ind> <dep>-70</dep></entry>
   </interpolation>
   <center>
@@ -792,7 +819,7 @@
   <property>surface-positions/elevator-pos-norm</property>
   <interpolation>
    <entry><ind>-1.0</ind> <dep>-16</dep></entry>
-   <entry><ind>   0</ind> <dep>  0</dep></entry>
+   <entry><ind>   0</ind> <dep>  7</dep></entry>
    <entry><ind> 0.5</ind> <dep> 28</dep></entry>
    <entry><ind> 1.0</ind> <dep> 70</dep></entry>
   </interpolation>
@@ -864,6 +891,18 @@
   </condition>
  </animation>
 
+
+<!-- __________________ Parachute __________________ -->
+
+ <model>
+  <name>Parachute</name>
+  <path>Aircraft/flash2a/Models/parachute/parachute.xml</path>
+  <offsets>
+   <x-m>1.55</x-m>
+   <z-m>1.96</z-m>
+   <pitch-deg>90</pitch-deg>
+ </offsets>
+ </model> 
 
 
 </PropertyList>

@@ -58,6 +58,15 @@
       <binding>
         <command>nasal</command>
 	<script>
+	  if ( getprop("sim/model/flash2a/custom-control_previous") == "normal"  and 
+	       getprop("sim/model/flash2a/custom-control") != "normal") {
+	    setprop("controls/flight/elevator-trim", getprop("controls/flight/elevator-trim") * (-1) );
+          }
+	  if ( getprop("sim/model/flash2a/custom-control_previous") != "normal"  and 
+	       getprop("sim/model/flash2a/custom-control") == "normal" ) {
+	    setprop("controls/flight/elevator-trim", getprop("controls/flight/elevator-trim") * (-1) );
+          }
+          setprop("sim/model/flash2a/custom-control_previous", getprop("sim/model/flash2a/custom-control") );
 	</script>
       </binding>
     </list>
