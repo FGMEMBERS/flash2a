@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<system name="Groundhandling">
+
+
+  <channel name="check_if_on_ground">
+    <pure_gain name="systems/groundhandling/on_ground">
+      <input>gear/unit[1]/compression-ft</input>
+      <gain>5</gain>
+      <clipto>
+        <min>0.</min>
+        <max>1.</max>
+      </clipto>
+    </pure_gain> 
+  </channel>
+
+
+  <channel name="AlphaBetaDueToPilotInput">
+    
+    <fcs_function>
+      <function name="systems/groundhandling/alpha-ground-deg">
+        <description>alpha due to elevator input on ground</description>
+      <sum>
+        <product>
+	  <value>-1</value>
+	  <property>fcs/elevator-pos-deg</property>
+	  <cos>
+	    <property>aero/beta-rad</property>
+	  </cos>
+	</product>
+        <property>aero/alpha-deg</property>
+      </sum>
+      </function>
+    </fcs_function>
+    
+    <switch name="aero/alpha-eff0-deg">
+      <default value="aero/alpha-deg"/>
+      <test value="systems/groundhandling/alpha-ground-deg">
+        <!--  /sim/model/flash2a/on_ground GE 0.999 -->
+	systems/groundhandling/on_ground GE 0.01
+      </test> 
+    </switch>	      
+
+   <summer name="aero/alpha-eff-deg">
+     <input> aero/alpha-eff0-deg </input>
+     <bias> 5. </bias>
+   </summer>
+    
+  </channel>
+</system>

@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!-- version: 2014-04-30 -->
+<PropertyList>
+  <name>controls_dialog</name>
+  <layout>vbox</layout>
+  <default-padding>1</default-padding>
+  <modal>false</modal>
+  <width>120</width>
+
+  <!-- Title bar with close button -->
+  <group>
+    <layout>hbox</layout><equal>true</equal>
+    <default-padding>1</default-padding>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+    <text>
+      <label>Controls</label>
+      <font>
+        <name>times_bold</name>
+      </font>
+    </text>
+    <empty>
+      <stretch>true</stretch>
+    </empty>
+    <button>
+      <legend/>
+      <key>Esc</key>
+      <pref-width>16</pref-width>
+      <pref-height>16</pref-height>
+      <border>2</border>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+
+  <hrule/>
+  <hrule/> 
+       
+  <!-- controls selection-->
+  <group>
+    <layout>hbox</layout>
+    <equal>stretch</equal>      
+    <halign>center</halign>
+    <list>
+      <x>500</x>
+      <y>0</y>
+      <pref-width>100</pref-width>
+      <pref-height>75</pref-height>
+      <property>sim/model/flash2a/custom-control</property>
+      <value>normal</value>
+      <value>inverted</value>
+      <value>inverted pitch</value>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>nasal</command>
+	<script>
+	  if ( getprop("sim/model/flash2a/custom-control_previous") == "normal"  and 
+	       getprop("sim/model/flash2a/custom-control") != "normal") {
+	    setprop("controls/flight/elevator-trim", getprop("controls/flight/elevator-trim") * (-1) );
+          }
+	  if ( getprop("sim/model/flash2a/custom-control_previous") != "normal"  and 
+	       getprop("sim/model/flash2a/custom-control") == "normal" ) {
+	    setprop("controls/flight/elevator-trim", getprop("controls/flight/elevator-trim") * (-1) );
+          }
+          setprop("sim/model/flash2a/custom-control_previous", getprop("sim/model/flash2a/custom-control") );
+	</script>
+      </binding>
+    </list>
+  </group>
+
+</PropertyList>

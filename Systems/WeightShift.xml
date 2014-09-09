@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+
+<system name="WeightShift">
+
+ 
+ <!-- hang point coordinates -->
+ <property value="61.0 ">systems/weightshift/hangpoint-x-inch</property>   <!-- x = 1.55m -->
+ <property value=" 0.0 ">systems/weightshift/hangpoint-y-inch</property>   <!-- y = 0.00m -->
+ <property value="77.17">systems/weightshift/hangpoint-z-inch</property>   <!-- z = 1.96m -->
+
+ <!-- pointmass locations --> 
+ <property value="66.9">systems/weightshift/pointmass-location-X-inches[0]</property>   <!-- empty trike x = 1.7m -->
+ <property value=" 0.0">systems/weightshift/pointmass-location-Y-inches[0]</property>   <!-- empty trike y = 0.0m -->
+ <property value="11.8">systems/weightshift/pointmass-location-Z-inches[0]</property>   <!-- empty trike z = 0.3m -->
+
+ <property value="47.2">systems/weightshift/pointmass-location-X-inches[1]</property>   <!-- pilot x = 1.2m -->
+ <property value=" 0.0">systems/weightshift/pointmass-location-Y-inches[1]</property>   <!-- pilot y = 0.0m -->
+ <property value="15.7">systems/weightshift/pointmass-location-Z-inches[1]</property>   <!-- pilot z = 0.4m -->
+
+ <property value="61.0">systems/weightshift/pointmass-location-X-inches[2]</property>   <!-- passenger x = 1.55m -->
+ <property value=" 0.0">systems/weightshift/pointmass-location-Y-inches[2]</property>   <!-- passenger y = 0.0m -->
+ <property value="19.7">systems/weightshift/pointmass-location-Z-inches[2]</property>   <!-- passenger z = 0.5m -->
+
+ <property value="0.0"> systems/weightshift/cg_trike-x-inch </property>
+ <property value="0.0"> systems/weightshift/cg_trike-y-inch </property>
+ <property value="0.0"> systems/weightshift/cg_trike-z-inch </property>
+
+     
+ <channel name="WeightShift">
+
+   <!--
+   Strategy:
+   Up to now only the common cg of all pointmasses (calculated in weight_and_balance.nas) is shifted! 
+   Hence all pointmasses have the same x,y,z-locations.
+   But this means that the inertia of the loaded trike is reduced. Maybe this influences tumbling?!
+   Should be improved (just don't know, how to code this effectively; would need a loop over all pointmasses)!
+   Note: Fuel-masses are NOT shifted because the location-properties aren't available in the property-tree and
+   hence can't be modified on the fly -> should make a feature request (btw. same issue with external forces and gear)!
+   -->
+
+
+   <!-- Transformation: move hang point to origin -->
+   <summer name="systems/weightshift/cg_trike-xlocal-inch">
+     <input> systems/weightshift/cg_trike-x-inch </input>
+     <input> -systems/weightshift/hangpoint-x-inch </input>
+   </summer>
+   <summer name="systems/weightshift/cg_trike-ylocal-inch">
+     <input> systems/weightshift/cg_trike-y-inch </input>
+     <input> -systems/weightshift/hangpoint-y-inch </input>
+   </summer>
+   <summer name="systems/weightshift/cg_trike-zlocal-inch">
+     <input> systems/weightshift/cg_trike-z-inch </input>
+     <input> -systems/weightshift/hangpoint-z-inch </input>
+   </summer>
+
+   <!-- First rotation about y-axis (pitch axis) -->        
+   <fcs_function name="systems/weightshift/delta-x-inch">
+     <function >
+       <description>shift pilot weight forward/backward X-component</description>
+     <sum>
+       <product>
+	 <property>systems/weightshift/cg_trike-xlocal-inch</property>
+	 <cos>
+           <property>fcs/elevator-pos-rad</property>
+	 </cos>
+       </product>     
+       <product>
+	 <property>systems/weightshift/cg_trike-zlocal-inch</property>
+	 <sin>
+           <property>fcs/elevator-pos-rad</property>
+	 </sin>
+       </product>    
+     </sum> 
+     </function>
+   </fcs_function>
+
+   <fcs_function name="systems/weightshift/delta-z_elevator-inch">
+     <function>
+       <description>shift pilot weight forward/backward Z-component</description>
+     <sum> 
+       <product>
+	 <property>systems/weightshift/cg_trike-xlocal-inch</property>
+         <value> -1. </value>
+	 <sin>
+           <property>fcs/elevator-pos-rad</property>
+         </sin> 
+       </product>    
+       <product>
+	 <property>systems/weightshift/cg_trike-zlocal-inch</property>
+	 <cos>
+           <property>fcs/elevator-pos-rad</property>
+         </cos>
+       </product>    
+     </sum> 
+     </function>
+   </fcs_function>
+
+   <!-- Subsequent rotation about x-axis (roll axis) -->
+   <fcs_function name="systems/weightshift/delta-y-inch">
+     <function >
+       <description>shift pilot weight left/right Y-component</description>
+     <sum>
+       <product>
+         <property>systems/weightshift/cg_trike-ylocal-inch</property>
+         <cos>
+           <property>fcs/left-aileron-pos-rad</property>
+         </cos>
+       </product>     
+       <product>
+	 <property>systems/weightshift/delta-z_elevator-inch</property>
+	 <value> -1. </value>
+	 <sin>
+           <property>fcs/left-aileron-pos-rad</property>
+	 </sin>
+       </product>    
+     </sum> 
+     </function>
+   </fcs_function>
+
+   <fcs_function name="systems/weightshift/delta-z-inch">
+     <function>
+       <description>shift pilot weight left/right Z-component</description>
+     <sum> 
+       <product>
+	 <property>systems/weightshift/cg_trike-ylocal-inch</property>
+	 <sin>
+           <property>fcs/left-aileron-pos-rad</property>
+	 </sin> 
+       </product>    
+       <product>
+	 <property>systems/weightshift/delta-z_elevator-inch</property>
+	 <cos>
+           <property>fcs/left-aileron-pos-rad</property>
+	 </cos>
+       </product>    
+     </sum> 
+     </function>
+   </fcs_function>
+
+   <!-- Transformation: move back to FDM-coordinates  -->
+   <summer name="systems/weightshift/cg_trike-xglobal-inch">
+     <input> systems/weightshift/delta-x-inch </input>
+     <input> systems/weightshift/hangpoint-x-inch </input>
+   </summer>
+
+   <summer name="systems/weightshift/cg_trike-yglobal-inch">
+     <input> systems/weightshift/delta-y-inch </input>
+     <input> systems/weightshift/hangpoint-y-inch </input>
+   </summer>
+
+   <summer name="systems/weightshift/cg_trike-zglobal-inch">
+     <input> systems/weightshift/delta-z-inch </input>
+     <input> systems/weightshift/hangpoint-z-inch </input>
+   </summer>
+
+   <!-- weightshift only in air / no weighshift on ground -->
+   <switch name="switch_onground_x">
+     <default value="systems/weightshift/cg_trike-xglobal-inch"/>
+     <test value="systems/weightshift/cg_trike-x-inch">
+       <!--/sim/model/flash2a/on_ground GE 0.999 -->
+	 systems/groundhandling/on_ground GE 0.1
+
+     </test>
+     <output>inertia/pointmass-location-X-inches[0]</output>
+     <output>inertia/pointmass-location-X-inches[1]</output>
+     <output>inertia/pointmass-location-X-inches[2]</output>
+   </switch>
+
+   <switch name="switch_onground_y">
+     <default value="systems/weightshift/cg_trike-yglobal-inch"/>
+     <test value="systems/weightshift/cg_trike-y-inch">
+       <!--/sim/model/flash2a/on_ground GE 0.999 -->
+	 systems/groundhandling/on_ground GE 0.1
+
+     </test>
+     <output>inertia/pointmass-location-Y-inches[0]</output>
+     <output>inertia/pointmass-location-Y-inches[1]</output>
+     <output>inertia/pointmass-location-Y-inches[2]</output>
+   </switch>
+
+   <switch name="switch_onground_z">
+     <default value="systems/weightshift/cg_trike-zglobal-inch"/>
+     <test value="systems/weightshift/cg_trike-z-inch">
+       <!--/sim/model/flash2a/on_ground GE 0.999 -->
+	 systems/groundhandling/on_ground GE 0.1
+
+     </test>
+     <output>inertia/pointmass-location-Z-inches[0]</output>
+     <output>inertia/pointmass-location-Z-inches[1]</output>
+     <output>inertia/pointmass-location-Z-inches[2]</output>
+   </switch>
+      
+ </channel>
+
+</system>

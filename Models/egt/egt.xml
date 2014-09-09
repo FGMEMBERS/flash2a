@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+	<path>egt.ac</path>
+	<animation>
+		<type>rotate</type>
+		<object-name>RightNeedle</object-name>
+            <property>engines/engine[0]/egt-degf</property>
+		<interpolation>
+                  <!-- non-linear, and don't actually match the scale!  -->
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>430</ind><dep>17</dep></entry>   
+			<entry><ind>630</ind><dep>45</dep></entry>   
+		</interpolation>
+            <center>
+			<x-m>0.0</x-m>
+			<y-m>0.016</y-m>
+			<z-m>0.001</z-m>
+            </center>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>LeftNeedle</object-name>
+            <property>engines/engine[0]/egt-degf</property>
+		<interpolation>
+                  <!-- non-linear, and don't actually match the scale!  -->
+			<entry><ind>0</ind><dep>0</dep></entry>
+			<entry><ind>430</ind><dep>-17</dep></entry>   
+			<entry><ind>630</ind><dep>-45</dep></entry>   
+		</interpolation>
+            <center>
+			<x-m>0.0</x-m>
+			<y-m>-0.016</y-m>
+			<z-m>0.001</z-m>
+            </center>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+  <!-- LoD -->
+  <animation>
+    <type>range</type>
+    <min-m>0</min-m>
+    <max-m>20</max-m>
+  </animation>
+
+</PropertyList>

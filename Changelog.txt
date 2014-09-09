@@ -1,0 +1,21 @@
+
+Changes July 2014 by D-NXKT:
+
+- redesigned FDM with weightshift-control
+- weight and balance
+- emergency parachute
+- new thumbnail.jpg
+
+
+Changes April 2014 by D-NXKT:
+
+- new wing
+- customizable controls
+- multiplayer ready
+- aerotow hitch
+- model rotates about c.g. instead of trike-nose
+- different reference-systems on ground and in air: 
+  animated wing on ground / animated trike in air
+- animated cockpit view
+- added animated pilot and passenger
+
