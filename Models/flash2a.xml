@@ -1,0 +1,908 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <nasal>
+  <load>
+   ##############################################################################
+   # The on-load Nasal is not executed when this file is loaded as the user aircraft.
+   ##############################################################################
+   var rplayer = cmdarg();
+   # Set up property aliases for animations.
+   rplayer.getNode("sim/model/flash2a/on_ground", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/int[0]"));
+   rplayer.getNode("sim/model/flash2a/pilot", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/int[1]"));
+   rplayer.getNode("sim/model/flash2a/passenger", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/int[2]"));
+   rplayer.getNode("sim/current-view/view-number", 1).setIntValue(1); # set view=1 to prevent deselected helmet     
+   rplayer.getNode("fdm/jsbsim/fcs/parachute-pos-norm", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[0]")); 
+   rplayer.getNode("fdm/jsbsim/aero/alpha-deg", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[1]")); 
+   rplayer.getNode("fdm/jsbsim/aero/beta-deg", 1).
+     alias(rplayer.getNode("sim/multiplay/generic/float[2]")); 
+    #print("flash2a loaded")
+  </load>
+
+  <unload>
+   rplayer.getNode("sim/model/flash2a/on_ground", 1).unalias(); 
+   rplayer.getNode("sim/model/flash2a/pilot", 1).unalias();
+   rplayer.getNode("sim/model/flash2a/passenger", 1).unalias();
+   rplayer.getNode("fdm/jsbsim/fcs/parachute-pos-norm", 1).unalias(); 
+   rplayer.getNode("fdm/jsbsim/aero/alpha-deg", 1).unalias();
+   rplayer.getNode("fdm/jsbsim/aero/beta-deg", 1).unalias();
+    #print("flash2a unloaded");
+  </unload>
+ </nasal>
+
+ <path>flash2a.ac</path>
+
+ <!-- 3D Instruments -->
+ <model>
+  <name>ASI</name>
+  <path>Aircraft/flash2a/Models/asi/asi.xml</path>
+  <offsets>
+   <x-m>0.66</x-m>
+   <y-m>-0.14</y-m>
+   <z-m>0.32</z-m>
+   <pitch-deg>-38</pitch-deg>
+  </offsets>
+ </model>
+
+ <model>
+  <name>CompassFlash2a</name>
+  <path>Aircraft/flash2a/Models/compass/compass.xml</path>
+  <offsets>
+   <x-m>0.67</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.305</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Altimeter</name>
+  <path>Aircraft/flash2a/Models/alt/alt.xml</path>
+  <offsets>
+   <x-m>0.64</x-m>
+   <y-m>-0.06</y-m>
+   <z-m>0.345</z-m>
+   <pitch-deg>-38</pitch-deg>
+  </offsets>
+ </model>
+
+ <model>
+  <name>EGT</name>
+  <path>Aircraft/flash2a/Models/egt/egt.xml</path>
+  <offsets>
+   <x-m>0.64</x-m>
+   <y-m>0.09</y-m>
+   <z-m>0.35</z-m>
+   <pitch-deg>-38</pitch-deg>
+  </offsets>
+ </model>
+
+ <model>
+  <name>RPM</name>
+  <path>Aircraft/flash2a/Models/rpm/rpm.xml</path>
+  <offsets>
+   <x-m>0.665</x-m>
+   <y-m>0.14</y-m>
+   <z-m>0.33</z-m>
+   <pitch-deg>-38</pitch-deg>
+  </offsets>
+ </model>
+
+<!-- Transparent Surfaces for Rembrandt rendering -->
+ <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <object-name>Visor</object-name>
+    <object-name>Vizor</object-name>
+    <object-name>Vizor.001</object-name>
+ </effect>
+
+  
+<!-- Hand Throttle -->
+  <animation>
+  <type>rotate</type>
+  <object-name>HandThrottle</object-name>
+   <!-- <property>controls/engines/engine[0]/handthrottle</property> -->
+   <property>controls/engines/engine[0]/throttle</property>
+  <factor>270</factor>
+  <axis>
+      <x1-m>1.33</x1-m>
+      <y1-m>-0.342</y1-m>
+      <z1-m>0.227</z1-m>
+      <x2-m>1.329</x2-m>
+      <y2-m>-0.32</y2-m>
+      <z2-m>0.226</z2-m>
+    </axis>
+ </animation>
+
+<!-- 
+ <animation>
+  <type>pick</type>
+  <object-name>HandThrottleDown</object-name>
+  <visible>false</visible>
+  <action>
+    <name>decrease hand throttle fine</name>
+    <button>0</button>
+    <repeatable>true</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>controls/engines/engine/handthrottle</property>
+      <step>-0.01</step>
+      <min>0.0</min>
+      <max>1.0</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+  <action>
+    <name>decrease hand throttle coarse</name>
+    <button>1</button>
+    <repeatable>true</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>controls/engines/engine/handthrottle</property>
+      <step>-0.1</step>
+      <min>0.0</min>
+      <max>1.0</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>HandThrottleUp</object-name>
+  <visible>false</visible>
+  <action>
+    <name>increase hand throttle fine</name>
+    <button>0</button>
+    <repeatable>true</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>controls/engines/engine/handthrottle</property>
+      <step>0.01</step>
+      <min>0.0</min>
+      <max>1.0</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+  <action>
+    <name>increase hand throttlecoarse</name>
+    <button>1</button>
+    <repeatable>true</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>controls/engines/engine/handthrottle</property>
+      <step>0.1</step>
+      <min>0.0</min>
+      <max>1.0</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+ </animation>
+-->
+
+<!-- Magneto Switch-->
+
+  <animation>
+  <type>rotate</type>
+  <object-name>MagnetoSwitch</object-name>
+   <property>controls/engines/engine[0]/magnetos</property>
+  <factor>30</factor>
+  <axis>
+      <x1-m>1.325</x1-m>
+      <y1-m>0.318</y1-m>
+      <z1-m>0.236</z1-m>
+      <x2-m>1.322</x2-m>
+      <y2-m>-0.309</y2-m>
+      <z2-m>0.234</z2-m>
+    </axis>
+ </animation>
+
+<!-- 
+ <animation>
+  <type>pick</type>
+  <object-name>MagnetoOff</object-name>
+  <visible>false</visible>
+  <action>
+    <name>Magneto Off</name>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>controls/engines/engine/magnetos</property>
+      <step>-3.0</step>
+      <min>0.0</min>
+      <max>3.0</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>MagnetoOn</object-name>
+  <visible>false</visible>
+  <action>
+    <name>Switch Magneto On</name>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>controls/engines/engine/magnetos</property>
+      <step>3.0</step>
+      <min>0.0</min>
+      <max>3.0</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+ </animation>
+-->
+
+ <!-- Magneto Switch -->
+ <animation>
+  <type>pick</type>
+  <object-name>MagnetoSwitch_Off</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-assign</command>
+      <property>/controls/engines/engine/magnetos</property>
+      <value>0</value>
+    </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>MagnetoSwitch_On</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-assign</command>
+      <property>/controls/engines/engine/magnetos</property>
+      <value>1</value>
+    </binding>
+  </action>
+ </animation>
+
+ <!-- Starter -->
+ <animation>
+  <type>pick</type>
+  <object-name>StarterHandle</object-name>
+  <action>
+    <name>Start</name>
+    <button>0</button>
+    <repeatable>true</repeatable>
+    <binding>
+     <command>nasal</command>
+     <script>controls.startEngine()</script>
+    </binding>
+    <mod-up>
+     <binding>
+      <command>nasal</command>
+      <script>props.setAll("/controls/engines/engine", "starter", 0)</script>
+     </binding>
+    </mod-up>
+  </action>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>StarterHandle</object-name>
+  <condition>
+   <equals>
+    <property>engines/engine[0]/cranking</property>
+    <value>false</value>
+   </equals>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>StarterHandlePulled</object-name>
+  <object-name>StarterRope2Pulled</object-name>
+  <condition>
+   <equals>
+    <property>engines/engine[0]/cranking</property>
+    <value>true</value>
+   </equals>
+  </condition>
+ </animation>
+
+  <!-- Object movements -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>NoseWheel</object-name>
+  <object-name>NoseStrut</object-name>
+<!--  <property>fdm/jsbsim/fcs/rudder-cmd-norm</property>   -->
+   <property>surface-positions/rudder-pos-norm</property>
+  <factor>20</factor>
+  <center>
+   <x-m>0.24</x-m>
+   <y-m>0.0</y-m>
+   <z-m>-0.22</z-m>
+  </center>
+  <axis>
+   <x>-0.2</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>spin</type>  <!-- Unit = RPM  -->
+   <object-name>NoseWheel</object-name>
+    <property>gear/gear[0]/rollspeed-ms</property>
+    <factor>-75.548</factor>  
+    <center>
+      <x-m>0.2443</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-0.2161</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Prop</object-name>
+  <condition>
+   <less-than>
+    <property>engines/engine[0]/rpm</property>
+    <value>500</value>
+   </less-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>Prop</object-name>
+  <property>engines/engine[0]/rpm</property>
+  <factor>-1</factor>
+  <center>
+   <x-m>2.4</x-m>
+   <y-m>0</y-m>
+   <z-m>0.55</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Wing</object-name>
+  <object-name>ControlBar</object-name>
+  <object-name>ControlBar2</object-name>
+  <object-name>Rudder</object-name>
+  <object-name>KingPost</object-name>
+  <object-name>WingKeel</object-name>
+  <object-name>ControlBarStrap</object-name>
+  <object-name>ControlBarBolt1</object-name>
+  <object-name>ControlBarBolt2</object-name>
+
+  <object-name>Trike</object-name>
+  <object-name>ASI</object-name>
+  <object-name>CompassFlash2a</object-name>
+  <object-name>Altimeter</object-name>
+  <object-name>EGT</object-name>
+  <object-name>RPM</object-name>
+  
+  <object-name>Pilot</object-name>
+  <object-name>Passenger</object-name>
+  
+  <expression>
+   <product>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <property>sim/model/flash2a/on_ground</property>
+    <value>-15</value>
+    <value>1</value>
+   </product>
+  </expression>
+
+  <center>
+   <x-m>1.55</x-m>
+   <y-m>0.0</y-m>
+   <z-m>1.96</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Trike</object-name>
+  <object-name>ASI</object-name>
+  <object-name>CompassFlash2a</object-name> 
+  <object-name>Altimeter</object-name>
+  <object-name>EGT</object-name>
+  <object-name>RPM</object-name>
+  <object-name>Pilot</object-name>
+  <object-name>Passenger</object-name>
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <factor>15</factor>
+  <center>
+   <x-m>1.55</x-m>
+   <y-m>0.0</y-m>
+   <z-m>1.96</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>Wing</object-name>
+  <object-name>ControlBar</object-name>
+  <object-name>ControlBar2</object-name>
+  <object-name>Rudder</object-name>
+  <object-name>KingPost</object-name>
+  <object-name>WingKeel</object-name>
+  <object-name>ControlBarStrap</object-name>
+  <object-name>ControlBarBolt1</object-name>
+  <object-name>ControlBarBolt2</object-name>
+  <object-name>HangStrap</object-name>
+
+  <object-name>Trike</object-name>
+  <object-name>ASI</object-name>
+  <object-name>CompassFlash2a</object-name>
+  <object-name>Altimeter</object-name>
+  <object-name>EGT</object-name>
+  <object-name>RPM</object-name>
+
+  <object-name>Pilot</object-name>
+  <object-name>Passenger</object-name>
+  
+  <expression>
+   <table>
+    <product>
+     <property>surface-positions/elevator-pos-norm</property>
+     <property>sim/model/flash2a/on_ground</property>
+     <!--<property>fdm/jsbsim/systems/groundhandling/on_ground</property>-->
+    </product>
+    <entry><ind>-1.0</ind> <dep>-6</dep></entry>
+    <entry><ind> 0.0</ind> <dep> 3</dep></entry>
+    <entry><ind> 1.0</ind> <dep>12</dep></entry>
+   </table>
+  </expression>
+  <center>
+   <x-m>1.55</x-m>
+   <y-m>0.0</y-m>
+   <z-m>1.96</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Trike</object-name>
+  <object-name>ASI</object-name>
+  <object-name>CompassFlash2a</object-name> 
+  <object-name>Altimeter</object-name>
+  <object-name>EGT</object-name>
+  <object-name>RPM</object-name>
+  <object-name>Pilot</object-name>
+  <object-name>Passenger</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <interpolation>
+   <entry><ind>-1.0</ind> <dep>  6</dep></entry>
+   <entry><ind> 0.0</ind> <dep> -3</dep></entry>
+   <entry><ind> 1.0</ind> <dep>-12</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>1.55</x-m>
+   <y-m>0.0</y-m>
+   <z-m>1.96</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+
+<!-- __________________ Pilot __________________ -->
+
+ <animation>
+  <type>select</type>
+   <object-name>Pilot</object-name>
+   <condition>
+     <property>sim/model/flash2a/pilot</property>
+   </condition>
+ </animation>
+
+
+ <!-- ________ Left Side ________ -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Larm</object-name>  
+  <object-name>Lforearm</object-name>
+  <object-name>Lhand</object-name> 
+  <property>surface-positions/elevator-pos-norm</property>
+  <interpolation>
+   <entry><ind>-1.0</ind> <dep>-40</dep></entry>
+   <entry><ind>   0</ind> <dep> 15</dep></entry>
+   <entry><ind> 1.0</ind> <dep> 70</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>1.3060</x-m>
+   <y-m>-0.1698</y-m>
+   <z-m>0.6302</z-m>
+  </center>
+  <axis>
+   <x>-0.1</x>
+   <y>1.0</y>
+   <z>-0.5</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Larm</object-name>  
+  <object-name>Lforearm</object-name>
+  <object-name>Lhand</object-name> 
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <interpolation>
+   <entry><ind>-1.0</ind> <dep> 40</dep></entry>
+   <entry><ind>   0</ind> <dep>  0</dep></entry>
+   <entry><ind> 1.0</ind> <dep>-30</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>1.3060</x-m>
+   <y-m>-0.1698</y-m>
+   <z-m>0.6302</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Larm</object-name>  
+  <object-name>Lforearm</object-name>
+  <object-name>Lhand</object-name> 
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <interpolation>
+   <entry><ind>-1.0</ind> <dep>10</dep></entry>
+   <entry><ind>   0</ind> <dep> 0</dep></entry>
+   <entry><ind> 1.0</ind> <dep> 8</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>1.3060</x-m>
+   <y-m>-0.1698</y-m>
+   <z-m>0.6302</z-m>
+  </center>
+  <axis>
+   <x>0.</x>
+   <y>1.0</y>
+   <z>-0.5</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Larm</object-name>  
+  <object-name>Lforearm</object-name>
+  <object-name>Lhand</object-name> 
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <interpolation>
+   <entry><ind>-1.0</ind> <dep> 0</dep></entry>
+   <entry><ind>   0</ind> <dep> 0</dep></entry>
+   <entry><ind> 1.0</ind> <dep>30</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>1.3060</x-m>
+   <y-m>-0.1698</y-m>
+   <z-m>0.6302</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.5</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Lforearm</object-name>
+  <object-name>Lhand</object-name> 
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <interpolation>
+   <entry><ind>-1.0</ind> <dep>-10</dep></entry>
+   <entry><ind>-0.5</ind> <dep>  0</dep></entry>
+   <entry><ind>   0</ind> <dep>  0</dep></entry>
+   <entry><ind> 1.0</ind> <dep>-30</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>1.3617</x-m>
+   <y-m>-0.3298</y-m>
+   <z-m>0.3890</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>-0.5</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Lforearm</object-name>
+  <object-name>Lhand</object-name> 
+  <property>surface-positions/elevator-pos-norm</property>
+  <interpolation>
+   <entry><ind>-1.0</ind> <dep> 16</dep></entry>
+   <entry><ind>   0</ind> <dep> -7</dep></entry>
+   <entry><ind> 0.5</ind> <dep>-28</dep></entry>
+   <entry><ind> 1.0</ind> <dep>-70</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>1.3617</x-m>
+   <y-m>-0.3298</y-m>
+   <z-m>0.3890</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>-0.5</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Lhand</object-name> 
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <interpolation>
+   <entry><ind>-1.0</ind> <dep>-20</dep></entry>
+   <entry><ind>   0</ind> <dep>  0</dep></entry>
+   <entry><ind> 1.0</ind> <dep>-10</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>1.1624</x-m>
+   <y-m>-0.3226</y-m>
+   <z-m>0.4232</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+
+ <!-- ________ Right Side ________ -->
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>Rarm</object-name>  
+  <object-name>Rforearm</object-name>
+  <object-name>Rhand</object-name> 
+  <property>surface-positions/elevator-pos-norm</property>
+  <interpolation>
+   <entry><ind>-1.0</ind> <dep> 40</dep></entry>
+   <entry><ind>   0</ind> <dep>-15</dep></entry>
+   <entry><ind> 1.0</ind> <dep>-70</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>1.3060</x-m>
+   <y-m>0.1698</y-m>
+   <z-m>0.6302</z-m>
+  </center>
+  <axis>
+   <x>-0.1</x>
+   <y>-1.0</y>
+   <z>-0.5</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Rarm</object-name>  
+  <object-name>Rforearm</object-name>
+  <object-name>Rhand</object-name> 
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <interpolation>
+   <entry><ind>-1.0</ind> <dep> 30</dep></entry>
+   <entry><ind>   0</ind> <dep>  0</dep></entry>
+   <entry><ind> 1.0</ind> <dep>-40</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>1.3060</x-m>
+   <y-m>0.1698</y-m>
+   <z-m>0.6302</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Rarm</object-name>  
+  <object-name>Rforearm</object-name>
+  <object-name>Rhand</object-name> 
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <interpolation>
+   <entry><ind>-1.0</ind> <dep> -8</dep></entry>
+   <entry><ind>   0</ind> <dep>  0</dep></entry>
+   <entry><ind> 1.0</ind> <dep>-10</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>1.3060</x-m>
+   <y-m>0.1698</y-m>
+   <z-m>0.6302</z-m>
+  </center>
+  <axis>
+   <x>0.</x>
+   <y>-1.0</y>
+   <z>-0.5</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Rarm</object-name>  
+  <object-name>Rforearm</object-name>
+  <object-name>Rhand</object-name> 
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <interpolation>
+   <entry><ind>-1.0</ind> <dep>-30</dep></entry>
+   <entry><ind>   0</ind> <dep>  0</dep></entry>
+   <entry><ind> 1.0</ind> <dep>  0</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>1.3060</x-m>
+   <y-m>0.1698</y-m>
+   <z-m>0.6302</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>-0.5</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Rforearm</object-name>
+  <object-name>Rhand</object-name> 
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <interpolation>
+   <entry><ind>-1.0</ind> <dep>30</dep></entry>
+   <entry><ind> 0.0</ind> <dep> 0</dep></entry>
+   <entry><ind> 0.5</ind> <dep> 0</dep></entry>
+   <entry><ind> 1.0</ind> <dep>10</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>1.3617</x-m>
+   <y-m>0.3298</y-m>
+   <z-m>0.3890</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>-1.0</y>
+   <z>-0.5</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Rforearm</object-name>
+  <object-name>Rhand</object-name> 
+  <property>surface-positions/elevator-pos-norm</property>
+  <interpolation>
+   <entry><ind>-1.0</ind> <dep>-16</dep></entry>
+   <entry><ind>   0</ind> <dep>  7</dep></entry>
+   <entry><ind> 0.5</ind> <dep> 28</dep></entry>
+   <entry><ind> 1.0</ind> <dep> 70</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>1.3617</x-m>
+   <y-m>0.3298</y-m>
+   <z-m>0.3890</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>-1.0</y>
+   <z>-0.5</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Rhand</object-name> 
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <interpolation>
+   <entry><ind>-1.0</ind> <dep>10</dep></entry>
+   <entry><ind>   0</ind> <dep> 0</dep></entry>
+   <entry><ind> 1.0</ind> <dep>20</dep></entry>
+  </interpolation>
+  <center>
+   <x-m>1.1624</x-m>
+   <y-m>0.3226</y-m>
+   <z-m>0.4232</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+
+<!-- __________________ Helmet+Vizor __________________ -->
+
+ <!-- hide helmet in Pilot-View  -->
+ <animation>
+  <object-name>Helmet</object-name>
+  <object-name>Vizor</object-name>
+  <type>select</type>
+   <condition>
+    <not>
+    <equals>
+     <property>sim/current-view/view-number</property>
+     <value>0</value>
+    </equals>
+    </not>
+    <not>
+    <equals>
+     <property>sim/current-view/view-number</property>
+     <value>8</value>
+    </equals>
+    </not>
+   </condition>   
+ </animation> 
+
+
+<!-- __________________ Passenger __________________ -->
+
+ <animation>
+  <type>select</type>
+  <object-name>Passenger</object-name>
+  <condition>
+   <property>sim/model/flash2a/passenger</property>
+  </condition>
+ </animation>
+
+
+<!-- __________________ Parachute __________________ -->
+
+ <model>
+  <name>Parachute</name>
+  <path>Aircraft/flash2a/Models/parachute/parachute.xml</path>
+  <offsets>
+   <x-m>1.55</x-m>
+   <z-m>1.96</z-m>
+   <pitch-deg>90</pitch-deg>
+ </offsets>
+ </model> 
+
+
+</PropertyList>
