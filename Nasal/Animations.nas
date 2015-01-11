@@ -1,7 +1,7 @@
 var ViewAndHitchAnimation = func {
 #
 # ---------------------------------------------------------------------------------
-#                        View and Hitch Animation               Status: 25.04.2014
+#                        View and Hitch Animation               Status: 11.01.2015
 # ---------------------------------------------------------------------------------
 #
 #
@@ -11,7 +11,7 @@ var ViewAndHitchAnimation = func {
 # roll     pitch     
 # alpha    beta      
 # aileron  elevator  
-# +-25deg  -6/+12deg 
+# +-15deg  -9/+9deg 
 #                       
 #                              
 #       z                  y       
@@ -28,27 +28,22 @@ var ViewAndHitchAnimation = func {
 # view-no |         name       | animation on ground |  animation in air    |
 #---------|--------------------|---------------------|----------------------|
 #     0   | Cockpit View       |          -          |           -          |   
-#     8   | Pilot View Animated|          -          | deflection w/o angle |
+#     8   | Keel View          |          -          |           -          |
+#     9   | Right Wing View    |          -          |           -          | 
+#    10   | Left Wing View     | deflection + angle  |                      |
+#    11   | Pilot View Animated|          -          | deflection w/o angle |
 #         | Hitch              |          -          | deflection w/o angle |
 #         | Wheels             |          -          |         not yet      |
 #        
 #--------------------------------------------------------------------------
+
+var m2in = 39.3700787;
 
 var view_number = getprop("sim/current-view/view-number");
 
 var on_ground   = 0;
 if ( view_number == 0 ) on_ground = 1;
 if ( getprop("gear/gear[2]/wow")  == 1 and getprop("gear/gear[2]/wow") == 1 ) on_ground = 1;
-
-  ## fake smooth transition in animation
-  #if ( getprop("sim/model/flash2a/on_ground_old") == 1 ) {
-  #  if ( on_ground == 0 and getprop("surface-positions/elevator-pos-norm") > 0. ) {
-  #    on_ground = 1;
-  #    } else {
-  #    setprop("sim/model/flash2a/on_ground_old", 0 );
-  #  }
-  #}
-  #setprop("sim/model/flash2a/on_ground_old",on_ground);
 
 setprop("sim/model/flash2a/on_ground",on_ground);
 
@@ -58,7 +53,7 @@ var hitch= ["dummy","dummy","dummy"];
 
 var n_loop = 0;
 
-if ( view_number == 8 ) {
+if ( view_number == 10 or view_number == 11 ) {
   n_loop = n_loop + 1;
   mode[n_loop-1] = "view_animation";
   }
@@ -84,7 +79,7 @@ for (var n=0; n < n_loop; n = n+1) {
       var z = 0.8526;
       if ( on_ground == 0 ) { var rotation = 1; };
     }
-    else if ( view_number == 8 ) {
+    else if ( view_number == 11 ) {
       # Point to rotate = X = (x,y,z) (Cockpit View Animated; FDM-system)
       #var x = 1.3;
       #var y = 0.;
@@ -94,13 +89,21 @@ for (var n=0; n < n_loop; n = n+1) {
       var z = 0.8526;      
       if ( on_ground == 0 ) { var rotation = 1; };
     }
+    else if ( view_number == 10 ) {
+      # Point to rotate = X = (x,y,z) (Left Wing View; FDM-system)
+      var x =  1.4;
+      var y = -5.5;
+      var z =  2.0;
+      if ( on_ground == 1 ) { var rotation = 1; };
+      var rotation_harness = 1;
+    }
   } # end mode view_animation
   else if ( mode[n] == "hitch_animation") {
     # Point to rotate = X = (x,y,z) (hitch; FDM-system)
     if ( hitch[n] == "hitch" ) {
       var x = 2.3;
       var y = 0.;
-      var z = 0.552;
+      var z = 0.5523;
       if ( on_ground == 0 ) rotation = 1;
     } 
     else {
@@ -115,7 +118,8 @@ for (var n=0; n < n_loop; n = n+1) {
     # Center of rotation = Xr = (xr,yr,zr) (FDM-system)
     var xr = 1.55;
     var yr = 0.;
-    var zr = 1.96;
+    #	var zr = 1.96;  # center for elevator
+    var zr = 2.04;      # center for aileron
     
     # defaults are necessary to avoid nasal runtime errors
     var x_new = x;   
@@ -142,16 +146,9 @@ for (var n=0; n < n_loop; n = n+1) {
     var sin_alpha = math.sin(aileron * 15. * fak);
     var cos_alpha = math.cos(aileron * 15. * fak);
 
-    if(elevator < 0 ){                            # due to interpolation in animation
-      var pitch_offset_deg = elevator * 12.;                                
-      var sin_beta  = math.sin(elevator * 12. * fak);
-      var cos_beta  = math.cos(elevator * 12. * fak);
-    }
-    else{
-      var pitch_offset_deg = elevator * 6.;
-      var sin_beta  = math.sin(elevator * 6.* fak);
-      var cos_beta  = math.cos(elevator * 6.* fak);
-    }
+    var pitch_offset_deg = elevator * 9.;				 
+    var sin_beta  = math.sin(elevator * 9. * fak);
+    var cos_beta  = math.cos(elevator * 9. * fak);
 
     var heading_offset_deg = rudder * 40.;
     var sin_gamma = math.sin(rudder * 40.* fak);
@@ -279,13 +276,21 @@ for (var n=0; n < n_loop; n = n+1) {
    #   setprop("sim/current-view/roll-offset-deg",-roll_zyx);
    #   setprop("sim/current-view/heading-offset-deg",heading_zyx); 
    # }
- 
+
+    if ( view_number == 10 ) {
+      # Left Wing View
+      var pitch_xyzq = -pitch_zyx - 0. ;
+      var heading_xyzq = -heading_zyx - 85. ;
+      setprop("sim/current-view/pitch-offset-deg",-roll_zyx - 8.);      
+      setprop("sim/current-view/roll-offset-deg",pitch_xyzq);
+      setprop("sim/current-view/heading-offset-deg",heading_xyzq); 
+    }
   }
   if ( mode[n] == "hitch_animation") {
-    #print("device ",device[n]);
-    setprop("sim/hitches/" ~ device[n] ~ "/local-pos-x",-x_new);
-    setprop("sim/hitches/" ~ device[n] ~ "/local-pos-y",-y_new);
-    setprop("sim/hitches/" ~ device[n] ~ "/local-pos-z",z_new);
+    # force location
+    setprop("fdm/jsbsim/external_reactions/" ~ hitch[n]~ "/location-x-in",x_new * m2in);
+    setprop("fdm/jsbsim/external_reactions/" ~ hitch[n]~ "/location-y-in",y_new * m2in);
+    setprop("fdm/jsbsim/external_reactions/" ~ hitch[n]~ "/location-z-in",z_new * m2in);
   } # end mode hitch_animation
   
 }  # end loop
