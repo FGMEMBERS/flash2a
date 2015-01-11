@@ -5,7 +5,7 @@
 
   <description>Mainair Flash 2 Alpha</description>
   <author>Stuart Buchanan / D-NXKT</author>
-  <aircraft-version>July 2014</aircraft-version>
+  <aircraft-version>January 2015</aircraft-version>
 
   <status>beta</status>
   <rating>
@@ -220,6 +220,54 @@
   </view>
 
   <view n="100">
+    <name>Keel View</name>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <x-offset-m archive="y" type="double">0.0</x-offset-m>
+      <y-offset-m archive="y" type="double">1.6</y-offset-m>
+      <z-offset-m archive="y" type="double">5.0</z-offset-m>
+      <pitch-offset-deg type="double">-14</pitch-offset-deg>
+    </config>
+  </view>
+
+  <view n="101">
+    <name>Right Wing View</name>
+    <enabled type="bool">true</enabled>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <x-offset-m archive="y" type="double">5.5</x-offset-m>
+      <y-offset-m archive="y" type="double">2.</y-offset-m>
+      <z-offset-m archive="y" type="double">1.4</z-offset-m>
+      <pitch-offset-deg type="double">-8</pitch-offset-deg>
+      <roll-offset-deg type="double">0</roll-offset-deg>
+      <heading-offset-deg type="double">85.0</heading-offset-deg>
+    </config>
+  </view>
+
+  <view n="102">
+    <name>Left Wing View</name>
+    <enabled type="bool">true</enabled>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <x-offset-m archive="y" type="double">-5.5</x-offset-m>
+      <y-offset-m archive="y" type="double">2.0</y-offset-m>
+      <z-offset-m archive="y" type="double">1.4</z-offset-m>
+      <pitch-offset-deg type="double">-8</pitch-offset-deg>
+      <roll-offset-deg type="double">0</roll-offset-deg>
+      <heading-offset-deg type="double">-85.0</heading-offset-deg>
+    </config>
+  </view>
+
+  <view n="103">
    <name>Pilot View Animated</name>
    <enabled type="bool">true</enabled>
    <internal type="bool">true</internal>
@@ -258,9 +306,6 @@
   <hitches>
    <aerotow>
     <force_name_jsbsim type="string">hitch</force_name_jsbsim>
-    <local-pos-x type="float">2.3</local-pos-x>
-    <local-pos-y type="float">0.</local-pos-y>
-    <local-pos-z type="float">0.552</local-pos-z>
     <force-is-calculated-by-other type="bool">true</force-is-calculated-by-other>
     <mp-auto-connect-period type="float">1.0</mp-auto-connect-period>
     <tow>

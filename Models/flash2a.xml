@@ -390,7 +390,8 @@
   <object-name>ControlBarStrap</object-name>
   <object-name>ControlBarBolt1</object-name>
   <object-name>ControlBarBolt2</object-name>
-
+  <object-name>HangStrap</object-name>
+  
   <object-name>Trike</object-name>
   <object-name>ASI</object-name>
   <object-name>CompassFlash2a</object-name>
@@ -413,7 +414,7 @@
   <center>
    <x-m>1.55</x-m>
    <y-m>0.0</y-m>
-   <z-m>1.96</z-m>
+   <z-m>2.04</z-m>
   </center>
   <axis>
    <x>1.0</x>
@@ -424,6 +425,7 @@
 
  <animation>
   <type>rotate</type>
+  <object-name>HangStrap</object-name>
   <object-name>Trike</object-name>
   <object-name>ASI</object-name>
   <object-name>CompassFlash2a</object-name> 
@@ -437,7 +439,7 @@
   <center>
    <x-m>1.55</x-m>
    <y-m>0.0</y-m>
-   <z-m>1.96</z-m>
+   <z-m>2.04</z-m>
   </center>
   <axis>
    <x>1.0</x>
@@ -874,7 +876,7 @@
     <not>
     <equals>
      <property>sim/current-view/view-number</property>
-     <value>8</value>
+     <value>11</value>
     </equals>
     </not>
    </condition>   
