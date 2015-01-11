@@ -1,3 +1,9 @@
+Changes January 2015 by D-NXKT:
+
+- hitch location shifts with trike
+- additional views (Keel View, Right Wing View, Left Wing View)
+- bug-fix for hang-strap animation
+
 
 Changes July 2014 by D-NXKT:
 
