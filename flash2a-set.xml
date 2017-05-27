@@ -2,10 +2,20 @@
 <PropertyList>
 
  <sim>
-
   <description>Mainair Flash 2 Alpha</description>
-  <author>Stuart Buchanan / D-NXKT</author>
+  <long-description>Flexwing microlight/ultralight popular in UK in the 1990s.  Powered by 36hp Rotax 503 2-stroke engine, cruising at 50mph.</long-description>
+  <author>Stuart Buchanan, D-NXKT</author>
   <aircraft-version>January 2015</aircraft-version>
+
+  <tags>
+    <tag>ultralight</tag>
+    <tag>mainair</tag>
+    <tag>1990s</tag>
+    <tag>fixed-gear</tag>
+    <tag>stol</tag>
+    <tag>piston</tag>
+    <tag>1-engine</tag>
+  </tags>
 
   <status>beta</status>
   <rating>
@@ -108,7 +118,7 @@
    <default>
     <menu n="10">
      <label>Flash2a</label>
-     <enabled type="bool">true</enabled>     
+     <enabled type="bool">true</enabled>
      <item>
       <label>Configure Controls</label>
        <binding>
@@ -121,7 +131,7 @@
           setprop("sim/model/flash2a/custom-control_previous", getprop("sim/model/flash2a/custom-control") );
         </script>
        </binding>
-     </item>    
+     </item>
 
      <item>
       <label>Weight and Balance</label>
@@ -129,7 +139,7 @@
         <command>nasal</command>
         <script>flash2a.weight_and_balance(); flash2a.weight_and_balance_dialog.open()</script>
        </binding>
-     </item>	
+     </item>
 
      <item>
       <label>Toggle With/Without Pilot </label>
@@ -138,7 +148,7 @@
         <property>sim/model/flash2a/pilot</property>
         <value>0</value>
        </binding>
-     </item>    
+     </item>
 
      <item>
       <label>Toggle With/Without Passenger </label>
@@ -147,7 +157,7 @@
         <property>sim/model/flash2a/passenger</property>
         <value>0</value>
        </binding>
-     </item>    
+     </item>
 
      <item>
        <label>Aerotow Settings</label>
@@ -155,17 +165,17 @@
          <command>nasal</command>
          <script>flash2a.aerotow_dialog.open()</script>
        </binding>
-     </item>    
+     </item>
     </menu>
    </default>
   </menubar>
- 
+
   <panel>
    <visibility archive="y">false</visibility>
   </panel>
 
   <!-- position the pilot viewpoint and angle -->
- 
+
   <view>
    <internal archive="y">true</internal>
    <config>
@@ -316,9 +326,9 @@
     </rope>
    </aerotow>
   </hitches>
- 
+
   <aircraft-data>
-    <path>/sim/model/flash2a/custom-control</path> 
+    <path>/sim/model/flash2a/custom-control</path>
     <path>/sim/model/flash2a/pilot</path>
     <path>/sim/model/flash2a/passenger</path>
     <path>/fdm/jsbsim/inertia/pointmass-weight-kg[0]</path>
@@ -330,8 +340,8 @@
 
  </sim>
 
- <input> 
-  <keyboard> 
+ <input>
+  <keyboard>
    <key n="79">
      <name>O</name>
      <desc>Open aerotow-hook</desc>
@@ -366,9 +376,9 @@
      </binding>
    </key>
 
-  </keyboard> 
+  </keyboard>
  </input>
-  
+
  <!-- trim for level cruise -->
 
  <controls>
@@ -419,7 +429,7 @@
    <serviceable type="bool">true</serviceable>
   </encoder>
  </instrumentation>
-  
+
  <engines>
   <engine>
    <rpm type="double">0</rpm>
@@ -441,7 +451,7 @@
     <file>Aircraft/flash2a/Nasal/handthrottle.nas</file>
   </handthrottle>
   <flash2a>
-    <file>Aircraft/flash2a/Nasal/CustomControls.nas</file>  
+    <file>Aircraft/flash2a/Nasal/CustomControls.nas</file>
     <file>Aircraft/flash2a/Nasal/SetDefaults.nas</file>
     <file>Aircraft/flash2a/Nasal/dialogs.nas</file>
     <file>Aircraft/flash2a/Nasal/Animations.nas</file>
@@ -449,5 +459,5 @@
   </flash2a>
  </nasal>
 
-  
+
 </PropertyList>
