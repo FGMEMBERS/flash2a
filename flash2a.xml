@@ -15,21 +15,21 @@
     <documentation> --- </documentation>
     <reference>
       Ref 1: mainairsports Flash 2 Alpha Aircraft Manual
-             (http://www.pmaviation.co.uk/admin/upload_pdf/GeminiF2AlphaMan.PDF)   
+             (http://www.pmaviation.co.uk/admin/upload_pdf/GeminiF2AlphaMan.PDF)
       Ref 2: eXCursion Flightzone July-August 1990
              (http://forums.bmaa.org/attach.aspx/4004/Flash%20IIA2.doc)
       Ref 3: Gratton, G. B., The weightshift-controlled microlight aeroplane, Proc. Instn. Mech. Engrs Vol. 215 Part G
              (bura.brunel.ac.uk/bitstream/2438/1234/1/weightshift.pdf)
       Ref 4: Gratton G. and Newman S., The 'tumle' departure mode in weightshift-controlled microlight aircraft,
              Proc. Instn Mech. Engrs Vol. 217 Part G: Aerospace Engineering, IMechE 2003, pp 149-166
-	     (www.hgfa.asn.au/resources/tumble1.pdf)
+             (www.hgfa.asn.au/resources/tumble1.pdf)
       Ref 5: Civil Aviation Authority - Safety Regulation Group, Microlight Type Approval Data Sheet (TADS)
              No: BM-23 Issue: 13
-	     (http://www.bmaa.org/files/bm23_13_gemini_flash_iia.pdf)
+             (http://www.bmaa.org/files/bm23_13_gemini_flash_iia.pdf)
       Ref 6: Gratton, G. B., A Theoretical and Experimental Appraisal of Airworthiness Evaluation Techniques 
              for Small light Aeroplanes, Thesis, Faculty of Engineering and Applied Science Department of 
-	     Aerospace Engineering, University Southhampton, February 2005
-	     (bura.brunel.ac.uk/bitstream/2438/708/1/FulltextThesis.pdf)
+             Aerospace Engineering, University Southhampton, February 2005
+             (bura.brunel.ac.uk/bitstream/2438/708/1/FulltextThesis.pdf)
     </reference>
   </fileheader>
 
@@ -69,7 +69,7 @@
    <!--
        ___________________________________________________
 
-   	datum of all locations is trike nose!
+        datum of all locations is trike nose!
         ( xJSBsim = xModel ) 
        ___________________________________________________
 
@@ -107,34 +107,34 @@
    </location>
 
    <pointmass name="Trike">
-     <weight unit="KG">100.</weight>  
+     <weight unit="KG">100.</weight>
      <location name="NearEngine" unit="M">
        <!-- x,y,z are defined in systems/WeightShift.xml -->
      </location>
-   </pointmass>        
+   </pointmass>
 
    <pointmass name="Pilot">
-     <weight unit="KG">75.</weight>  
+     <weight unit="KG">75.</weight>
      <location name="FrontSeat" unit="M">
        <!-- x,y,z are defined in systems/WeightShift.xml -->
      </location>
-   </pointmass>        
+   </pointmass>
 
    <pointmass name="Passenger">
-     <weight unit="KG">15.</weight>  
+     <weight unit="KG">15.</weight>
      <location name="RearSeat" unit="M">
        <!-- x,y,z are defined in systems/WeightShift.xml -->
      </location>
-   </pointmass>        
+   </pointmass>
 <!--
    <pointmass name="Fuel">
-     <weight unit="KG">15.6</weight>  
+     <weight unit="KG">15.6</weight>
      <location name="Tank" unit="M">
        <x>2.1</x>
        <y>0.</y>
        <z>0.3</z>
      </location>
-   </pointmass>        
+   </pointmass>
 -->
  </mass_balance>
 
@@ -251,7 +251,7 @@
     <y>0.0</y>
     <z>0.0</z>
    </direction>
-  </force>  
+  </force>
 
  </external_reactions>
  
@@ -326,13 +326,13 @@
          <property>/controls/flight/elevator_custom</property>
          <product>
            <value> -1 </value>
-	   <property>/controls/flight/elevator-trim_custom</property>
-	   <abs>
-	     <property>/controls/flight/elevator_custom</property>
-	   </abs>
+           <property>/controls/flight/elevator-trim_custom</property>
+           <abs>
+             <property>/controls/flight/elevator_custom</property>
+           </abs>
          </product>
          <property>/controls/flight/elevator-trim_custom</property>
-       </sum>   
+       </sum>
      </function>
      <output>fcs/elevator-pos-norm</output>
    </fcs_function>
@@ -342,7 +342,7 @@
       <zero_centered>false</zero_centered>
       <domain>
         <min> -1. </min>
-	<max>  1. </max>
+        <max>  1. </max>
       </domain>
       <range>
         <min> -0.157 </min>  <!-- -9.0deg -->
@@ -401,7 +401,7 @@
    </aerosurface_scale>
 
    <pure_gain name="Steering Norm">
-     <input>fcs/rudder-cmd-norm</input> 
+     <input>fcs/rudder-cmd-norm</input>
      <gain>-1.</gain>
      <output>fcs/rudder-pos-norm</output>
    </pure_gain>
@@ -413,32 +413,33 @@
     <kinematic name="fcs/parachute-deployment-control">
       <input>/sim/model/flash2a/parachute</input>
       <traverse>
-  	<setting>
-  	  <position>0</position>
-  	  <time>0</time>
-  	</setting>
-  	<setting>
-  	  <position>1</position>
-  	  <time>2</time>
-  	</setting>
+        <setting>
+          <position>0</position>
+          <time>0</time>
+        </setting>
+        <setting>
+          <position>1</position>
+          <time>2</time>
+        </setting>
       </traverse>
     </kinematic>
     
     <fcs_function name="fcs/parachute-pos-norm">
       <function>
-  	<description>velocity dependent deployment time</description>
-  	<pow>
+        <description>velocity dependent deployment time</description>
+        <pow>
           <property>fcs/parachute-deployment-control</property>
           <quotient>
             <value>40.</value>
-  	    <property>velocities/vtrue-fps</property>
-  	  </quotient>
+            <property>velocities/vtrue-fps</property>
+          </quotient>
         </pow>
       </function>
       <clipto>
+        <min>0</min>
         <max>1</max>
       </clipto>
-    </fcs_function>   
+    </fcs_function>
 
   </channel>
 
@@ -456,9 +457,9 @@
         <table>
           <independentVar lookup="row">aero/alpha-eff-deg</independentVar>
           <tableData>
-	    -180.    0.
-	    -135.    1.
-	     -90.    0.
+            -180.    0.
+            -135.    1.
+             -90.    0.
              -25.   -1.229
              -20.   -1.025
              -15.   -0.656
@@ -478,34 +479,34 @@
               22.    1.75
               25.    1.650
               45.    1.
-	      90.    0.
-	     135.   -1.
-	     180.    0.
-	  
-	  <!--
-	    -180.    0.
-	    -135.    1.
-	     -90.    0.
+              90.    0.
+             135.   -1.
+             180.    0.
+
+          <!--
+            -180.    0.
+            -135.    1.
+             -90.    0.
              -25.   -1.229
              -20.   -1.025
              -15.   -0.656
              -10.   -0.328
               -5.   -0.082
                0.   0.205
-	       0.7  0.242
-	       2.9  0.388
+               0.7  0.242
+               2.9  0.388
                5.   0.533
-	       8.5  0.760
-	       8.8  0.776
+               8.5  0.760
+               8.8  0.776
               10.   0.861
-	      14.   1.108
+              14.   1.108
               15.   1.188
               20.   1.332
               25.   1.188
-	      90.    0.
-	     135.   -1.
-	     180.    0.
-	  -->
+              90.    0.
+             135.   -1.
+             180.    0.
+          -->
           </tableData>
         </table>
       </product>
@@ -518,20 +519,20 @@
     <function name="aero/coefficient/CDalpha">
       <description>Drag_due_to_alpha</description>
       <product>
-    	<property>aero/qbar-psf</property>
-    	<property>metrics/Sw-sqft</property>
-    	<table> 	
-    	  <independentVar
-    	  lookup="row">aero/alpha-eff-deg</independentVar>
-    	  <tableData>
+        <property>aero/qbar-psf</property>
+        <property>metrics/Sw-sqft</property>
+        <table>
+          <independentVar
+          lookup="row">aero/alpha-eff-deg</independentVar>
+          <tableData>
            -180.    0.18
            -135.    1.
             -90.    1.4
             -25.    0.205
-	    -20.    0.171
-	    -15.    0.109
-	    -10.    0.055
-	     -5.    0.014
+            -20.    0.171
+            -15.    0.109
+            -10.    0.055
+             -5.    0.014
               0.    0.052
               3.    0.052
               5.    0.060
@@ -551,24 +552,24 @@
 
           <!--
             -25.          0.205
-	    -20.      	  0.171
-	    -15.      	  0.109
-	    -10.      	  0.055
-	     -5.      	  0.014
-	      0.      	  0.052
-	      0.7     	  0.052
-	      2.9     	  0.055
-	      5.      	  0.060
-	      8.5     	  0.070
-	      8.8     	  0.070
-	     10.          0.075
+            -20.          0.171
+            -15.          0.109
+            -10.          0.055
+             -5.          0.014
+              0.          0.052
+              0.7         0.052
+              2.9         0.055
+              5.          0.060
+              8.5         0.070
+              8.8         0.070
+             10.          0.075
              14.          0.080
-	     15.          0.090
-	     20.          0.120
-	     25.          0.150
+             15.          0.090
+             20.          0.120
+             25.          0.150
           -->
-    	  </tableData>  	       
-    	</table>
+          </tableData>
+        </table>
       </product>
     </function>
 
@@ -616,7 +617,7 @@
            <property>metrics/bw-ft</property>
            <property>aero/beta-rad</property>
            <value>-0.1</value>
-       <value>0.</value>	   	 
+       <value>0.</value>
        </product>
     </function>
 
@@ -629,7 +630,7 @@
            <property>aero/bi2vel</property>
            <property>velocities/p-aero-rad_sec</property>
            <value>-0.4</value>
-       <value>0.8</value>	   
+       <value>0.8</value>
        </product>
     </function>
 
@@ -642,7 +643,7 @@
            <property>aero/bi2vel</property>
            <property>velocities/r-aero-rad_sec</property>
            <value>0.15</value>
-       <value>0.</value>	   
+       <value>0.</value>
        </product>
     </function>
 
@@ -654,7 +655,7 @@
           <property>metrics/Sw-sqft</property>
           <property>metrics/bw-ft</property>
           <property>fcs/left-aileron-pos-rad</property>
-          <value>0.</value>	  
+          <value>0.</value>
        </product>
     </function>
     -->
@@ -666,11 +667,11 @@
     <function name="aero/coefficient/Cm0">
       <description>Pitching_moment_at_zero_alpha</description>
       <product>
-    	<property>aero/qbar-psf</property>
-    	<property>metrics/Sw-sqft</property>
-    	<property>metrics/cbarw-ft</property>
-    	<value>-0.012</value>
-	<value>0.5</value>
+        <property>aero/qbar-psf</property>
+        <property>metrics/Sw-sqft</property>
+        <property>metrics/cbarw-ft</property>
+        <value>-0.012</value>
+        <value>0.5</value>
       </product>
     </function>
 
@@ -680,30 +681,30 @@
          <property>aero/qbar-psf</property>
          <property>metrics/Sw-sqft</property>
          <property>metrics/cbarw-ft</property>
-	 <table>
+         <table>
           <independentVar lookup="row">aero/alpha-eff-deg</independentVar>
           <tableData>
-	    -180.    0.
-	    -135.   -0.1
-	     -90.   -0.2
+            -180.    0.
+            -135.   -0.1
+             -90.   -0.2
              -25.    0.087
              -20.    0.112
              -15.    0.137
              -10.    0.124
               -5.    0.099
                0.    0.037
-	       0.7   0.020
-	       2.9   0.012
-	       5.    0.012
-	       8.5   0.012
-	       8.8   0.012
-	       10.   0.012
-	       15.   0.010
-	       20.   0.010
+               0.7   0.020
+               2.9   0.012
+               5.    0.012
+               8.5   0.012
+               8.8   0.012
+               10.   0.012
+               15.   0.010
+               20.   0.010
                25.  -0.099
-	       90.  -0.4
-	      135.  -0.4
-	      180.   0. 
+               90.  -0.4
+              135.  -0.4
+              180.   0.
           </tableData>
          </table>
        </product>
@@ -712,16 +713,16 @@
     <function name="aero/coefficient/CmTrikeDrag">
        <description>Pitch_moment_due_to_trike_drag</description>
        <product>
-          <property>aero/qbar-psf</property>   <!-- should be qbar of CG but is qbar of wing: wrong while tumbling --> 
-	  <value>0.8</value>      <!-- trike area 0.8m2 estimated -->
-	  <value>10.764</value>   <!-- m2 to ft2 -->
-          <property>systems/weightshift/distance_z_cg_trike2hp-in</property>   
+          <property>aero/qbar-psf</property>   <!-- should be qbar of CG but is qbar of wing: wrong while tumbling -->
+          <value>0.8</value>      <!-- trike area 0.8m2 estimated -->
+          <value>10.764</value>   <!-- m2 to ft2 -->
+          <property>systems/weightshift/distance_z_cg_trike2hp-in</property>
           <value>0.083333</value> <!-- in to ft -->
           <value>0.2</value>      <!-- cw trike estimated-->
-	  <cos>
-	    <property>aero/alpha-rad</property> <!-- should be alpha-rad-eff, but good enough -->
-	  </cos>
-       <value>1.</value> 	  	  
+          <cos>
+            <property>aero/alpha-rad</property> <!-- should be alpha-rad-eff, but good enough -->
+          </cos>
+       <value>1.</value>
        </product>
     </function>
 
@@ -734,7 +735,7 @@
            <property>aero/ci2vel</property>
            <property>velocities/q-aero-rad_sec</property>
            <value>-12</value>
-       <value>0.1</value>	   
+       <value>0.1</value>
        </product>
     </function>
 
@@ -747,7 +748,7 @@
            <property>aero/ci2vel</property>
            <property>aero/alphadot-rad_sec</property>
            <value>-7</value>
-       <value>0.0</value>	   
+       <value>0.0</value>
        </product>
     </function>
 
@@ -763,7 +764,7 @@
            <property>metrics/bw-ft</property>
            <property>aero/beta-rad</property>
            <value>0.12</value>
-       <value>1.0</value>	   
+       <value>1.0</value>
        </product>
     </function>
 
@@ -783,7 +784,7 @@
 
  </aerodynamics>
 
-  <system file="GroundHandling"/> 
+  <system file="GroundHandling"/>
   <system file="WeightShift"/>
-  
+
 </fdm_config>

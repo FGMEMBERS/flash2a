@@ -25,9 +25,23 @@
     <model type="int">4</model>
   </rating>
 
-  <startup>
-    <splash-texture>Aircraft/flash2a/flash2a-splash.rgb</splash-texture>
-  </startup>
+  <previews>
+    <preview>
+      <type>exterior</type>
+      <splash type="bool">true</splash>
+      <path>exterior1.jpg</path>
+    </preview>
+    <preview>
+      <type>exterior</type>
+      <splash type="bool">true</splash>
+      <path>exterior2.jpg</path>
+    </preview>
+    <preview>
+      <type>panel</type>
+      <splash type="bool">false</splash>
+      <path>cockpit.jpg</path>
+    </preview>
+  </previews>
 
   <flight-model archive="y">jsb</flight-model>
   <aero archive="y">flash2a</aero>
